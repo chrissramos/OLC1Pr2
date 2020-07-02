@@ -19,11 +19,13 @@ String metodoUno(){
     nombre = "Randall";
     do{
         Console.Write("estasmos en DOOO");
+        continue;
     }
     while(a<10){
         Console.Write("ESTAMOS EN WHILE");
+        continue;
     }
-
+    return "hola";
 }
 
 int  metodoDos( string cad1, int var3){
@@ -39,7 +41,7 @@ int  metodoDos( string cad1, int var3){
 
     for(int a=2 ; a<10; a++) {
        string variable = "hola";
-       
+       continue;
     }
 }
 void metodoUno(){
@@ -65,4 +67,5 @@ void metodoUno(){
     }
 
     Console.Write(" estamos aqui");
+    return ;
 }

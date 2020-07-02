@@ -133,11 +133,15 @@ adentro
 	|RELSE LLAVEIZQ adentros LLAVEDER
 	|RELSE RIF PARIZQ expresionlogica PARDER LLAVEIZQ adentros LLAVEDER
 	|RSWITCH PARIZQ expresion PARDER LLAVEIZQ casos LLAVEDER 
-	|RFOR PARIZQ tipodato expresion  IGUAL expresion PTCOMA expresionlogica PTCOMA expresion MAS MAS PARDER LLAVEIZQ adentros LLAVEDER
-	|RWHILE PARIZQ expresionlogica PARDER LLAVEIZQ adentros LLAVEDER
-	|RDO LLAVEIZQ adentros LLAVEDER
+	|RFOR PARIZQ tipodato expresion  IGUAL expresion PTCOMA expresionlogica PTCOMA expresion MAS MAS PARDER LLAVEIZQ adentros poscontinue
+	|RWHILE PARIZQ expresionlogica PARDER LLAVEIZQ adentros poscontinue
+	|RDO LLAVEIZQ adentros poscontinue
 ;
-
+poscontinue
+	: LLAVEDER
+	| RCONTINUE PTCOMA LLAVEDER
+	| RCONTINUE expresion PTCOMA LLAVEDER
+;
 declaracionvar
 	: tipodato listavariables asingacionuna 
 	|listavariables asingacionuna
@@ -165,9 +169,13 @@ tipodato
 	| RCHAR
 ;
 metodo
-	: tipometodo  PARIZQ parametrosdentro  LLAVEIZQ adentros LLAVEDER 
+	: tipometodo  PARIZQ parametrosdentro  LLAVEIZQ adentros posreturn  
 ;
-
+posreturn
+	: LLAVEDER
+	| RRETURN PTCOMA LLAVEDER
+	| RRETURN expresion PTCOMA LLAVEDER
+;
 tipometodo
 	: tipodato expresion
 	| RVOID expresion
