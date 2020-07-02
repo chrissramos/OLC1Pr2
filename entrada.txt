@@ -1,3 +1,35 @@
 void main (){
 
 }
+
+string variable, variableDos, variable3, variable4 = "valor";
+
+int a,b,c;
+a = 5;
+b,c = 18;
+
+int j = 8*6;
+
+string var;
+
+var = "cadenaaaaa";
+
+String metodoUno(){
+    string nombre;
+    nombre = "Randall";
+
+}
+
+int  metodoDos( string cad1, int var3){
+
+}
+void metodoUno(){
+    if(a>b){
+        string variablee ;
+    } else if(b<a){
+        string variableeedos;
+    } 
+    else{
+        int variableee;
+    }
+}

@@ -63,6 +63,7 @@
 "<="			return 'MENORIGUAL';
 "=="			return 'IGUALES';
 "!="			return 'DISTINTO';
+"!"				return 'ADMIRACION';
 /*asignacion */
 "="				return 'IGUAL';
 
@@ -107,42 +108,110 @@ instrucciones
 	| instruccion
 	| error { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
-
 /*
 instruccion
 	: REVALUAR CORIZQ expresion CORDER PTCOMA {
 		console.log('El valor de la expresión es: ' + $3);
 	}
 ;
-
 */
+// sh compilar.sh
+// node parser
 instruccion
 	:	declaracionvar
 	|	main
+	| 	metodo
+;
+asignacionvar
+	: expresion
+	
 ;
 
 declaracionvar
-	: tipodato IDENTIFICADOR PTCOMA
+	: tipodato listavariables asingacionuna 
+	|listavariables asingacionuna
 ;
 
+asingacionuna 
+	: PTCOMA
+	| IGUAL asignacionvar PTCOMA 
+;
+listavariables 
+	: listavariables COMA variablesls
+	| variablesls
+;
+variablesls 
+	: expresion
+;
 main
 	: RVOID RMAIN  PARIZQ PARDER LLAVEIZQ LLAVEDER
 ;
-/*
-instruccion
-	:	declaracionvar
-	|	asignacionvar
-	|	metodos
-	|	funciones
-	|	main
-;*/
+
+tipodato
+	: RSTRING
+	| RINT
+	| RDOUBLE
+	| RCHAR
+;
+metodo
+	: tipometodo  PARIZQ parametrosdentro  LLAVEIZQ cuerpometodo 
+;
+cuerpometodo
+	:LLAVEDER 
+	|sentenciass cuerpometodo
+	|declaracionvar cuerpometodo
+;
+
+tipometodo
+	: tipodato expresion
+	| RVOID expresion
+;
+parametrosdentro
+	: PARDER
+	| listaparametros PARDER
+;
+listaparametros
+	: listaparametros COMA parametros
+	| parametros
+;
+parametros
+	: tipodato expresion
+;
+
+sentenciass
+	: sentenciascontrol
+	| sentenciasrepeticion
+	| sentenciaimprimir
+;
+sentenciascontrol
+	: RIF PARIZQ expresionlogica PARDER LLAVEIZQ instrucciones LLAVEDER
+	| RELSE LLAVEIZQ instrucciones LLAVEDER
+	| RELSE RIF PARIZQ expresionlogica PARDER LLAVEIZQ instrucciones LLAVEDER
+;
+expresionlogica
+	:expresionrelacional ANDY expresionrelacional
+	|expresionrelacional ORO expresionrelacional
+	|ADMIRACION expresionrelacional
+	|expresionrelacional
+;
+
+expresionrelacional
+	:expresion  MAYOR expresion
+	|expresion MENOR expresion
+	|expresion MAYORIGUAL expresion
+	|expresion MENORIGUAL expresion
+	|expresion IGUALES expresion
+	|expresion DISTINTO expresion
+;
 expresion
-	: MENOS expresion %prec UMENOS	{ $$ = $2 *-1; }
-	| expresion MAS expresion		{ $$ = $1 + $3; }
-	| expresion MENOS expresion		{ $$ = $1 - $3; }
-	| expresion POR expresion		{ $$ = $1 * $3; }
-	| expresion DIVIDIDO expresion	{ $$ = $1 / $3; }
-	| ENTERO						{ $$ = Number($1); }
-	| DECIMAL						{ $$ = Number($1); }
-	| PARIZQ expresion PARDER		{ $$ = $2; }
+	: MENOS expresion %prec UMENOS //	{ $$ = $2 *-1; }
+	| expresion MAS expresion		//{ $$ = $1 + $3; }
+	| expresion MENOS expresion		//{ $$ = $1 - $3; }
+	| expresion POR expresion		//{ $$ = $1 * $3; }
+	| expresion DIVIDIDO expresion	//{ $$ = $1 / $3; }
+	| ENTERO						//{ $$ = Number($1); }
+	| DECIMAL						//{ $$ = Number($1); }
+	| PARIZQ expresion PARDER		//{ $$ = $2; }
+	|CADENA
+	|IDENTIFICADOR
 ;
