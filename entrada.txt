@@ -1,5 +1,5 @@
 void main (){
-
+    Console.Write("Estamos en main");
 }
 
 string variable, variableDos, variable3, variable4 = "valor";
@@ -17,19 +17,52 @@ var = "cadenaaaaa";
 String metodoUno(){
     string nombre;
     nombre = "Randall";
+    do{
+        Console.Write("estasmos en DOOO");
+    }
+    while(a<10){
+        Console.Write("ESTAMOS EN WHILE");
+    }
 
 }
 
 int  metodoDos( string cad1, int var3){
+    Switch (valor){
+        case 1: 
+            a = 85;
+            break;
+        case 2:
+            a = "hola";
+            break;
+        default: b = "nadaaa";
+    }
 
+    for(int a=2 ; a<10; a++) {
+       string variable = "hola";
+       
+    }
 }
 void metodoUno(){
-    if(a>b){
+    if(a>b && b>c){
         string variablee ;
     } else if(b<a){
         string variableeedos;
-    } 
+    } else if(b<c){
+        string variableeedos;
+    } else if ("hola" == "hola"){
+        int pi = 3.14;
+    }
     else{
         int variableee;
     }
+
+    if(a>b || a <c){
+        string variablee ;
+    } 
+    else{
+        int variableee;
+         Console.Write(" estamos en else");
+    }
+
+    Console.Write(" estamos aqui");
 }

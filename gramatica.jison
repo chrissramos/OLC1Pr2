@@ -102,7 +102,6 @@
 ini
 	: instrucciones EOF {console.log('analisis exitoso ');}
 ;
-
 instrucciones
 	: instrucciones instruccion
 	| instruccion
@@ -118,13 +117,25 @@ instruccion
 // sh compilar.sh
 // node parser
 instruccion
-	:	declaracionvar
-	|	main
+	:	main
 	| 	metodo
+	| declaracionvar
 ;
-asignacionvar
-	: expresion
-	
+adentros
+	: adentros adentro 
+	|adentro
+	| error { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
+;
+adentro
+	: declaracionvar
+	|RCONSOLE PUNTO RWRITE PARIZQ expresion PARDER PTCOMA 
+	|RIF PARIZQ expresionlogica PARDER LLAVEIZQ adentros LLAVEDER
+	|RELSE LLAVEIZQ adentros LLAVEDER
+	|RELSE RIF PARIZQ expresionlogica PARDER LLAVEIZQ adentros LLAVEDER
+	|RSWITCH PARIZQ expresion PARDER LLAVEIZQ casos LLAVEDER 
+	|RFOR PARIZQ tipodato expresion  IGUAL expresion PTCOMA expresionlogica PTCOMA expresion MAS MAS PARDER LLAVEIZQ adentros LLAVEDER
+	|RWHILE PARIZQ expresionlogica PARDER LLAVEIZQ adentros LLAVEDER
+	|RDO LLAVEIZQ adentros LLAVEDER
 ;
 
 declaracionvar
@@ -134,7 +145,7 @@ declaracionvar
 
 asingacionuna 
 	: PTCOMA
-	| IGUAL asignacionvar PTCOMA 
+	| IGUAL expresion PTCOMA 
 ;
 listavariables 
 	: listavariables COMA variablesls
@@ -144,7 +155,7 @@ variablesls
 	: expresion
 ;
 main
-	: RVOID RMAIN  PARIZQ PARDER LLAVEIZQ LLAVEDER
+	: RVOID RMAIN  PARIZQ PARDER LLAVEIZQ adentros LLAVEDER
 ;
 
 tipodato
@@ -154,12 +165,7 @@ tipodato
 	| RCHAR
 ;
 metodo
-	: tipometodo  PARIZQ parametrosdentro  LLAVEIZQ cuerpometodo 
-;
-cuerpometodo
-	:LLAVEDER 
-	|sentenciass cuerpometodo
-	|declaracionvar cuerpometodo
+	: tipometodo  PARIZQ parametrosdentro  LLAVEIZQ adentros LLAVEDER 
 ;
 
 tipometodo
@@ -178,16 +184,16 @@ parametros
 	: tipodato expresion
 ;
 
-sentenciass
-	: sentenciascontrol
-	| sentenciasrepeticion
-	| sentenciaimprimir
+casos
+	:casos casoevaluar
+	|casoevaluar
 ;
-sentenciascontrol
-	: RIF PARIZQ expresionlogica PARDER LLAVEIZQ instrucciones LLAVEDER
-	| RELSE LLAVEIZQ instrucciones LLAVEDER
-	| RELSE RIF PARIZQ expresionlogica PARDER LLAVEIZQ instrucciones LLAVEDER
+
+casoevaluar
+	:RCASE expresion DOSPUNTOS adentros RBREAK PTCOMA
+	| RDEFAULT DOSPUNTOS adentros
 ;
+
 expresionlogica
 	:expresionrelacional ANDY expresionrelacional
 	|expresionrelacional ORO expresionrelacional
