@@ -64,7 +64,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Archivo:</h6>
               <a class="collapse-item" href="#">Abrir</a>
-              <a class="collapse-item"> <input type="file" id="subirEntrada"> </a>
+              <a class="collapse-item"> <input type="file" class="form-control-file" id="subirEntrada"> </a>
               <a class="collapse-item"> <button onclick="cargarEntrada()">Cargar Entrada</button> </a>
               <a class="collapse-item" href="#">Guardar</a>
               <a class="collapse-item" href="#">Guardar Como</a>
@@ -357,8 +357,8 @@
               <button onclick="archivoE()">MENSAJE</button>
               
               
-              <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                  class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+              <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                <i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
             </div>
 
 
@@ -369,13 +369,19 @@
               <!-- Earnings (Monthly) Card Example -->
               <div class="col-xl-8 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
+                  <form method="POST" action="/">
                   <div class="card-body">
                     <label for="comment">Entrada:</label>
-                    <textarea class="form-control" rows="10" id="txtAreaEntrada"></textarea>
+                    <textarea class="form-control" rows="10" id="txtAreaEntrada" name="txtAreaEntrada"></textarea>
+                    </br>
+                    <button type="submit" value="Submit" class="btn btn-primary" >Analizar Entrada</button>
                   </div>
+                </form>
+                  
                 </div>
+                
               </div>
-
+              
 
             </div>
 
@@ -482,6 +488,7 @@
 
   <!-- para acciones-->
   <script src="./js/acciones.js"></script>
+  <script src="../../parser.js"></script>
 
 
 

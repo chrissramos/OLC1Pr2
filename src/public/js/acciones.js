@@ -1,3 +1,6 @@
+
+//var parser = require('../../../gramatica');
+var textoArea;
 function cargarEntrada() {
     //alert("Encontro funcion");
     var fileToLoad = document.getElementById("subirEntrada").files[0];
@@ -5,8 +8,9 @@ function cargarEntrada() {
     fileReader.onload = function(fileLoadedEvent){
         var textFromFileLoaded = fileLoadedEvent.target.result;
         document.getElementById("txtAreaEntrada").value = textFromFileLoaded;
+        textoArea = textFromFileLoaded;
     };
-    
+
     fileReader.readAsText(fileToLoad, "UTF-8");
    // var x = document.getElementById("subirEntrada").content;
     //document.getElementById("txtAreaEntrada").value = x;
@@ -15,8 +19,15 @@ function cargarEntrada() {
   }
 
 
+  /*function archivoE(){
+    alert("CONTENIDO:  "+textoArea);
 
-  function archivoE(){
-    alert("encontro funcion");
+  }*/
+
+  function analizar(){
+      alert("Vamos a analizar");
+        parser.parse(textoArea);
 
   }
+  exports.textoArea = textoArea;
+  

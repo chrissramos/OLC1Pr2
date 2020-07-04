@@ -30,6 +30,8 @@
 "break"			return 'RBREAK';
 "continue"		return 'RCONTINUE';
 "main"			return 'RMAIN';
+"true"			return 'RTRUE';
+"false"			return 'RFALSE';
 
 
 
@@ -75,6 +77,7 @@
 [0-9]+("."[0-9]+)?\b  					return 'DECIMAL';
 [0-9]+\b								return 'ENTERO';
 ([a-zA-Z_])[a-zA-Z0-9_]*\b 				return 'IDENTIFICADOR'; 
+(\'[^']*\')\b							return 'CUERPOHTML';		
 //(\"[^"]*\")\b 							return 'CADENA';
 \"[^\"]*\"								{ yytext = yytext.substr(1,yyleng-2); return 'CADENA'; } 
 //  "/""/".*\b  							return 'COMENTSIMPLE';
@@ -100,11 +103,17 @@
 %% /* Definición de la gramática */
 
 ini
-	: instrucciones EOF {console.log('analisis exitoso ');}
+	: instrucciones EOF { 
+		console.log('Termino analisis ');
+		return $1;
+		}
 ;
 instrucciones
-	: instrucciones instruccion
-	| instruccion
+	: instrucciones instruccion 
+	| instruccion {  $$ = { 
+					type: 'instrucciones',
+					valor: $1 
+				  };	}
 	| error { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
 /*
@@ -117,9 +126,9 @@ instruccion
 // sh compilar.sh
 // node parser
 instruccion
-	:	main
+	:	main 
 	| 	metodo
-	| declaracionvar
+	| adentro 
 ;
 adentros
 	: adentros adentro 
@@ -129,18 +138,39 @@ adentros
 adentro
 	: declaracionvar
 	|RCONSOLE PUNTO RWRITE PARIZQ expresion PARDER PTCOMA 
-	|RIF PARIZQ expresionlogica PARDER LLAVEIZQ adentros LLAVEDER
-	|RELSE LLAVEIZQ adentros LLAVEDER
-	|RELSE RIF PARIZQ expresionlogica PARDER LLAVEIZQ adentros LLAVEDER
+	|RIF PARIZQ expresionlogica PARDER LLAVEIZQ finif
+	|RELSE LLAVEIZQ finif
+	|RELSE RIF PARIZQ expresionlogica PARDER LLAVEIZQ finif
 	|RSWITCH PARIZQ expresion PARDER LLAVEIZQ casos LLAVEDER 
-	|RFOR PARIZQ tipodato expresion  IGUAL expresion PTCOMA expresionlogica PTCOMA expresion MAS MAS PARDER LLAVEIZQ adentros poscontinue
-	|RWHILE PARIZQ expresionlogica PARDER LLAVEIZQ adentros poscontinue
-	|RDO LLAVEIZQ adentros poscontinue
+	|RFOR PARIZQ variablefor  IGUAL expresion PTCOMA expresionlogica PTCOMA expresion subirfor PARDER LLAVEIZQ  poscontinue
+	|RWHILE PARIZQ expresionlogica PARDER LLAVEIZQ  poscontinue
+	|RDO LLAVEIZQ  poscontinue
+;
+
+CUERPOIMP
+	:expresion
+	|CUERPOHTML
+	;
+
+variablefor
+	: tipodato expresion
+	|expresion
+;
+
+subirfor
+	: MAS MAS
+	| MENOS MENOS
+	;
+
+finif
+	: LLAVEDER
+	| adentros LLAVEDER
 ;
 poscontinue
 	: LLAVEDER
-	| RCONTINUE PTCOMA LLAVEDER
-	| RCONTINUE expresion PTCOMA LLAVEDER
+	| adentros LLAVEDER
+	| adentros RCONTINUE PTCOMA LLAVEDER
+	
 ;
 declaracionvar
 	: tipodato listavariables asingacionuna 
@@ -228,4 +258,7 @@ expresion
 	| PARIZQ expresion PARDER		//{ $$ = $2; }
 	|CADENA
 	|IDENTIFICADOR
+	|RTRUE
+	|RFALSE
 ;
+

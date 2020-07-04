@@ -1,0 +1,17 @@
+{
+  "tipo": "instrucciones",
+  "valor": {
+    "tipo": "instruccion",
+    "valor": {
+      "tipo": "main",
+      "valor": [
+        "void",
+        "main",
+        "(",
+        ")",
+        "{",
+        "}"
+      ]
+    }
+  }
+}
