@@ -77,7 +77,7 @@
 [0-9]+("."[0-9]+)?\b  					return 'DECIMAL';
 [0-9]+\b								return 'ENTERO';
 ([a-zA-Z_])[a-zA-Z0-9_]*\b 				return 'IDENTIFICADOR'; 
-(\'[^']*\')\b							return 'CUERPOHTML';		
+(\'[^']*\')							{ yytext = yytext.substr(1,yyleng-2); return 'CONTENIDOHTML'; } 
 //(\"[^"]*\")\b 							return 'CADENA';
 \"[^\"]*\"								{ yytext = yytext.substr(1,yyleng-2); return 'CADENA'; } 
 //  "/""/".*\b  							return 'COMENTSIMPLE';
@@ -199,10 +199,11 @@ CUERPOIMP
 					tipo: 'CUERPO_IMP',
 					valor: $1
 					};	}
-	|CUERPOHTML {  $$ = { 
+	|CONTENIDOHTML {  $$ = { 
 					tipo: 'CUERPO_IMP',
 					valor: $1
 					};	}
+	
 ;
 casos
 	:casos casoevaluar {  $$ = { 
