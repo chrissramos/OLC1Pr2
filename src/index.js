@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 var parser = require('../gramatica');
 let ast;
+global.globalast;
 // settings Express
 app.set('port', 3000);
 app.engine('html', require('ejs').renderFile);
@@ -32,14 +33,27 @@ app.use(bodyParser.urlencoded( { extended: true}));
 
 
 app.post('/', function(request, response){
-   // console.log(request.body.txtAreaEntrada)
+  //  var asd = request.body.txtAreaEntrada.toString()
+//    console.log(asd);
+    
+
     parser.parse(request.body.txtAreaEntrada.toString());
     ast = parser.parse(request.body.txtAreaEntrada.toString());
+    //fs.writeFileSync('./public/ast.json', JSON.stringify(ast, null, 2));
     fs.writeFileSync('./ast.json', JSON.stringify(ast, null, 2));
-    console.log('Armando AST');
+    //console.log(ast);
+    
+    //var astString = JSON.stringify(ast);
+    console.log(astString);
+    //response.render('index', {astVar: astString});
+    
     response.redirect("./")
+
 })
 
+app.get("/", function(req, res){
+    res.render("index", { variablePrueba: "aqui va todooooo" });
+});
 
 
 // npm run dev  

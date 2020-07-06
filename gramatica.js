@@ -90,9 +90,9 @@ case 1:
 		
 break;
 case 2:
-   this.$ = { 
+  this.$ = { 
 					tipo: 'instrucciones',
-					valor: [$$[$0-1], $$[$0]]
+					valor: [$$[$0-1],$$[$0]]
 				  };	
 break;
 case 3:

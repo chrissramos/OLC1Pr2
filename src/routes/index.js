@@ -11,6 +11,11 @@ router.get('/contact', (req,res)=>{
 
 });
 
+router.get('/carpetas', (req,res)=>{
+    res.render('carpetas.html', {title: 'CARPETAS'});
+
+});
+
 
 module.exports= router;
 

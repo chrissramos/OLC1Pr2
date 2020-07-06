@@ -109,9 +109,9 @@ ini
 		}
 ;
 instrucciones
-	: instrucciones instruccion  {   $$ = { 
+	: instrucciones instruccion  {  $$ = { 
 					tipo: 'instrucciones',
-					valor: [$1, $2]
+					valor: [$1,$2]
 				  };	}
 	| instruccion {  $$ = { 
 					tipo: 'instrucciones',

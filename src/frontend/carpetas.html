@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Simple jsTree</title>
+  
+
+</head>
+<body>
+    <div id="carpetasdiv"></div>
+
+                <script>
+                    // The JSObject that you want to render
+                    var data = { 
+                        hello: [1,2,3,4], 
+                        there: { 
+                            a:1, 
+                            b:2, 
+                            c:["hello", null]
+                        } 
+                    };
+
+                    // Render toggable list in the container element
+                    document.getElementById("carpetasdiv").appendChild(
+                        renderjson(data)
+                    );
+                </script>
+</body>
+</html>
