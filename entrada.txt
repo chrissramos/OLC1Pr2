@@ -1,6 +1,6 @@
 
 void main (){
-    Console.Write("Estamos en main");
+    Console.Write("holi");
 }
 
 string variable, variableDos, variable3, variable4 = "valor";
@@ -16,7 +16,11 @@ string var;
 var = "cadenaaaaa";
 
 do{
-        Console.Write("estasmos en DOOO");
+        Console.Write('<HTML>
+                    <HEAD>
+                    Definiciones de la cabecera
+                    </HEAD>
+                    <BODY>');
         continue;
 }
 
@@ -74,6 +78,9 @@ void metodoUno(){
          Console.Write(" estamos en else");
     }
 
-    Console.Write(' ');
+    Console.Write(' <h1>CONTENIDO HTML</h1> ');
     return ;
 }
+
+Console.Write(' </BODY>
+</HTML> ');

@@ -1,4 +1,4 @@
-const button = document.getElementById('btnCarpetas')
+//const button = document.getElementById('btnCarpetas')
 //var parser = require('../../../gramatica');
 var textoArea;
 var textFromFileLoaded;
@@ -21,8 +21,26 @@ function cargarEntrada() {
 
   }
 
+  function verCarpetas(){
+    alert("vamos a ver carpetas");
+    var fileToLoad = document.getElementById("subirCarpetas").files[0];
+    var fileReader = new FileReader();
+    fileReader.onload = function(fileLoadedEvent){
+        textFromFileLoaded = fileLoadedEvent.target.result;
+        //document.getElementById("txtAreaEntrada").value = textFromFileLoaded;
+        textFromJson = textFromFileLoaded;
+    };
 
-  button.addEventListener('click', () => {
+    fileReader.readAsText(fileToLoad, "UTF-8");
+    var jsonString = textFromJson.toString();
+    var jsonObjeto = JSON.parse(jsonString);
+
+    
+    document.getElementById("carpetasdiv").appendChild(renderjson(jsonObjeto))
+  }
+
+
+  /*button.addEventListener('click', () => {
     var fileToLoad = document.getElementById("subirCarpetas").files[0];
     var fileReader = new FileReader();
     fileReader.onload = function(fileLoadedEvent){
@@ -38,7 +56,7 @@ function cargarEntrada() {
     
     document.getElementById("carpetasdiv").appendChild(renderjson(jsonObjeto))
 
-  })
+  })*/
 
 
   /*function archivoE(){

@@ -4,10 +4,13 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 var parser = require('../gramatica');
+const parse = require('himalaya');
 
-
-
-
+//const html = fs.readFileSync('./hello.txt', {encoding: 'utf8'});
+//const json = parse(html);
+var himalaya = require('himalaya');
+var html = fs.readFileSync('./hello.html');
+var jsonSalida = himalaya.parse(html);
 
 let ast;
 global.globalast;
@@ -40,16 +43,18 @@ app.listen(app.get('port'), () => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true}));
 
-
+//variables para los textAreas
 var variablePrueba = "Randall ";
 var variableJsonPrincipal = "";
+var variableHtml = "";
 
 app.get('/', (req,res)=>{
     console.log('estamos en get');
    // res.render('index.ejs', {variablePrueba: variablePrueba, variableJsonPrincipal: variableJsonPrincipal });
     res.render('index.ejs', {
         variableJsonPrincipal: variableJsonPrincipal,
-        variablePrueba : variablePrueba
+        variablePrueba : variablePrueba,
+        variableHtml : variableHtml
     });
 
 });
@@ -57,24 +62,34 @@ app.get('/', (req,res)=>{
 
 
 app.post('/', function(request, response){
-    //var asd = request.body.txtAreaPyton.toString()
-   //console.log(asd);
-
     parser.parse(request.body.txtAreaEntrada.toString());
 
     ast = parser.parse(request.body.txtAreaEntrada.toString());
+
     //fs.writeFileSync('./public/ast.json', JSON.stringify(ast, null, 2));
     fs.writeFileSync('./ast.json', JSON.stringify(ast, null, 2));
     //console.log(ast);
+    console.log('leyendo html desde el servidor')
+    var jsonStr = JSON.stringify(jsonSalida)
+    console.log(jsonStr)
+
+
+    try {  
+        variableHtml = fs.readFileSync('./hello.txt', 'utf8');
+        //console.log(data.toString());    
+    } catch(e) {
+        console.log('Errorsito:', e.stack);
+    }
+
     
     var astString = JSON.stringify(ast);
     variablePrueba = "SALIDA HTML";
     variableJsonPrincipal = astString;
-    //console.log(astString);
-    //response.render('index.ejs', {variablePrueba: variablePrueba});
+    
     response.render('index.ejs', {
         variableJsonPrincipal: variableJsonPrincipal,
-        variablePrueba : variablePrueba
+        variablePrueba : variablePrueba,
+        variableHtml : variableHtml
     });
         
     //response.redirect("./")

@@ -430,7 +430,7 @@
               </div>
               <!-- Card Body -->
               <div class="card-body">
-                <div id="carpetasdiv" name="divcarpetas"></div>
+                <div id="jsonDiv" name="divcarpetas"></div>
                 <textarea readonly class="form-control" rows="5" id="salidaJson"><%=variableJsonPrincipal%></textarea>
                 
               </div>
@@ -448,7 +448,7 @@
                   <!-- Card Body -->
                   <div class="card-body">
 
-                    <textarea readonly class="form-control" rows="5" id="comment"></textarea>
+                    <textarea readonly class="form-control" rows="5" id="comment"><%=variableHtml%></textarea>
                   </div>
                 </div>
               </div>
@@ -462,7 +462,7 @@
                   <!-- Card Body -->
                   <div class="card-body">
 
-                    <textarea name="txtAreaPyton" readonly class="form-control" rows="5" id="comment"></textarea>
+                    <textarea name="txtAreaPyton" readonly class="form-control" rows="5" id="comment"><%=variableHtml%></textarea>
                   </div>
                 </div>
               </div>
@@ -473,7 +473,8 @@
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">ARBOL DE CARPETAS</h6>
                 <a class="collapse-item"> <input type="file" class="form-control-file" id="subirCarpetas"> </a>
-                <button id="btnCarpetas" class="btn btn-primary" >Ver Carpetas</button>
+                <button id="btnCarpetas" onclick="verCarpetas()" class="btn btn-primary" >Ver Carpetas</button>
+                
               </div>
               <!-- Card Body -->
               <div class="card-body">

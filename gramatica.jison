@@ -91,6 +91,7 @@
 /lex
 
 %{
+var fs = require('fs');
 var contHtml = "";	
 %}
 
@@ -108,6 +109,12 @@ ini
 	: instrucciones EOF { 
 		console.log('Termino analisis ');
 		console.log(contHtml);
+		//hacer archivo.txt o html
+		fs.writeFile('./src/hello.txt', contHtml, function(err) {
+		// If an error occurred, show it and return
+		if(err) return console.error(err);
+		// Successfully wrote to the file!
+		});
 		return $1;
 		}
 ;
@@ -202,10 +209,14 @@ CUERPOIMP
 					tipo: 'CUERPO_IMP',
 					valor: $1
 					};	}
-	|CONTENIDOHTML {  $$ = { 
+	|CONTENIDOHTML {
+					contHtml+= $1
+					  $$ = { 
 					tipo: 'CUERPO_IMP',
 					valor: $1
-					};	}
+					};
+					
+						}
 	
 ;
 casos
