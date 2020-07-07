@@ -365,6 +365,9 @@
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
+          <h1></h1>
+
+
           <div class="container-fluid">
 
             <!-- Page Heading -->
@@ -405,7 +408,7 @@
                   <form method="POST" action="/">
                   <div class="card-body">
                     <label for="comment">Salida Python:</label>
-                    <textarea readonly class="form-control" rows="10" id="txtSalidaPy" name="txtSalidaPy"></textarea>
+                    <textarea readonly class="form-control" rows="10" id="txtSalidaPy" name="txtSalidaPy"><%=variablePrueba%></textarea>
                     </br>
                     
                   </div>
@@ -420,7 +423,18 @@
             </div>
 
             <!-- Content Row -->
-
+            <div class="card shadow mb-4">
+              <!-- Card Header - Dropdown -->
+              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">JSON</h6>
+              </div>
+              <!-- Card Body -->
+              <div class="card-body">
+                <div id="carpetasdiv" name="divcarpetas"></div>
+                <textarea readonly class="form-control" rows="5" id="salidaJson"><%=variableJsonPrincipal%></textarea>
+                
+              </div>
+            </div>
             <div class="row">
 
               <!-- Area Chart -->
@@ -448,7 +462,7 @@
                   <!-- Card Body -->
                   <div class="card-body">
 
-                    <textarea readonly class="form-control" rows="5" id="comment"></textarea>
+                    <textarea name="txtAreaPyton" readonly class="form-control" rows="5" id="comment"></textarea>
                   </div>
                 </div>
               </div>
@@ -467,41 +481,6 @@
                 
                 <div id="carpetasdiv" name="divcarpetas"></div>
 
-                <script>
-                    
-                  
-                    var data = {
-                                  "glossary": {
-                                      "title": "example glossary",
-                                      "comprehensive": true,
-                                      "link": undefined,
-                                      "count": 1,
-                                      "GlossDiv": {
-                                          "title": "S",
-                                          "GlossList": {
-                                              "GlossEntry": {
-                                                  "ID": "SGML",
-                                                  "SortAs": "SGML",
-                                                  "GlossTerm": "Standard Generalized Markup Language",
-                                                  "Acronym": "SGML",
-                                                  "Abbrev": "ISO 8879:1986",
-                                                  "GlossDef": {
-                                                      "para": "A meta-markup language, used to create markup languages such as DocBook.",
-                                                      "GlossSeeAlso": ["GML", "XML"]
-                                                  },
-                                                  "GlossSee": "markup"
-                                              }
-                                          }
-                                      }
-                                  }
-                              };
-                    
-                    
-                    // Render toggable list in the container element
-                    //document.getElementById("carpetasdiv").appendChild(
-                     //   renderjson(data)
-                    //);
-                </script>
                 
               </div>
             </div>

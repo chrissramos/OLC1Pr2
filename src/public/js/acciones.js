@@ -3,6 +3,7 @@ const button = document.getElementById('btnCarpetas')
 var textoArea;
 var textFromFileLoaded;
 var textFromJson;
+var archivoo = '../helloworld.txt';
 function cargarEntrada() {
     //alert("Encontro funcion");
     var fileToLoad = document.getElementById("subirEntrada").files[0];
@@ -46,8 +47,10 @@ function cargarEntrada() {
   }*/
 
   function analizar(){
-      alert("Vamos a analizar");
+    //cargar cosas
+      alert("cargar datos a textareas");
       
+      //alert(__dirname);
         //parser.parse(textoArea);
 
   }

@@ -4,8 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=title%></title>
+    <style>
+        body {
+          font-size: 12px;
+          font-family: Arial;
+        }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 <body>
-    
+    <h1>hola</h1>
+    <textarea readonly rows="25" cols="150" id="comment">TextAreaaaa</textarea>
+
+
+    <div class="button">
+        <input type="button" id="lesen" value="Lesen!" />
+    </div>
+    <div class="text">
+        Lorem Ipsum <br />
+    </div>
+
+    <script>
+
+        $(document).ready(function() {
+            $("#lesen").click(function() {
+                $.ajax({
+                    //url : "../../../helloworld.txt",
+                    //success : function (data) {
+                      //  $(".text").html(data);
+                    //}
+                    
+                });
+            });
+        }); 
+    </script>
 </body>
 </html>
