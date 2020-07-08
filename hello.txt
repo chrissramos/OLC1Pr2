@@ -1,6 +1,0 @@
-<HTML>
-                    <HEAD>
-                    Definiciones de la cabecera
-                    </HEAD>
-                    <BODY> <h1>CONTENIDO HTML</h1>  </BODY>
-</HTML> 

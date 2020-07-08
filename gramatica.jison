@@ -87,12 +87,17 @@
 
 <<EOF>>				return 'EOF';
 
-.					{ console.error('Este es un error léxico: ' + yytext + ', en la linea: ' + yylloc.first_line + ', en la columna: ' + yylloc.first_column); }
+.					{ 
+						errorLexico += " <tr> <th> Lexico </th> <th> " +  yylloc.first_line + "</th> <th> " +  yylloc.first_column + "</th> <th>" + "El caracter: " + yytext + " No es parte del lenguaje </th> </tr>" ; 
+						console.log(errorLexico);
+						//console.error('Este es un error léxico: ' + yytext + ', en la linea: ' + yylloc.first_line + ', en la columna: ' + yylloc.first_column); 
+						}
 /lex
 
 %{
 var fs = require('fs');
 var contHtml = "";	
+var errorLexico = "<table> <tr> <th>Tipo error</th> <th>Linea </th> <th>Columna </th> <th>Descripcion </th> </tr> ";
 %}
 
 /* Asociación de operadores y precedencia */
@@ -108,13 +113,10 @@ var contHtml = "";
 ini
 	: instrucciones EOF { 
 		console.log('Termino analisis ');
+		contHtml += "</table>";
 		console.log(contHtml);
-		//hacer archivo.txt o html
-		fs.writeFile('./src/hello.txt', contHtml, function(err) {
-		// If an error occurred, show it and return
-		if(err) return console.error(err);
-		// Successfully wrote to the file!
-		});
+		fs.writeFileSync('./tableHtml.txt', contHtml);
+
 		return $1;
 		}
 ;
@@ -168,7 +170,7 @@ adentro
 					tipo: 'ADENTRO',
 					valor: $1
 					};	}
-	|RCONSOLE PUNTO RWRITE PARIZQ CUERPOIMP PARDER PTCOMA {  $$ = { 
+	|RCONSOLE PUNTO RWRITE PARIZQ expresion PARDER PTCOMA {  $$ = { 
 					tipo: 'ADENTRO',
 					valor: [$1, $2, $3, $4, $5, $6, $7]
 					};	}
@@ -197,12 +199,59 @@ adentro
 					tipo: 'ADENTRO',
 					valor: [$1, $2, $3]
 					};	}
+	|RWHILE PARIZQ expresionlogica PARDER PTCOMA {  $$ = { 
+					tipo: 'ADENTRO',
+					valor: [$1, $2, $3, $4, $5]
+					};	}
+	
 	|RSWITCH PARIZQ expresion PARDER LLAVEIZQ casos LLAVEDER 
 				{  $$ = { 
 					tipo: 'ADENTRO',
 					valor: [$1, $2, $3, $4, $5, $6, $7]
 					};	}
+	|RCONTINUE PTCOMA {  $$ = { 
+					tipo: 'ADENTRO',
+					valor: [$1, $2]
+					};	}
+	|RBREAK PTCOMA{  $$ = { 
+					tipo: 'ADENTRO',
+					valor: [$1, $2]
+					};	}
+	|llamarmetodo 
+	{  $$ = { 
+					tipo: 'ADENTRO',
+					valor: $1
+					};	}
 ;
+
+llamarmetodo
+	: IDENTIFICADOR PARIZQ PARDER PTCOMA {  $$ = { 
+					tipo: 'LLAMARMETODO',
+					valor: [$1, $2, $3, $4]
+					};	}
+	| IDENTIFICADOR PARIZQ listapar PARDER  PTCOMA {  $$ = { 
+					tipo: 'LLAMARMETODO',
+					valor: [$1, $2, $3, $4, $5]
+					};	}
+;
+listapar
+	: listapar COMA par {  $$ = { 
+					tipo: 'LISTAPAR',
+					valor: [$1, $2, $3]
+					};	}
+	|par {  $$ = { 
+					tipo: 'LISTAPAR',
+					valor: $1
+					};	}
+;
+
+par 
+	: IDENTIFICADOR {  $$ = { 
+					tipo: 'PAR',
+					valor: $1
+					};	}
+;
+
 
 CUERPOIMP
 	:expresion {  $$ = { 
@@ -283,10 +332,10 @@ poscontinue
 					tipo: 'POS_CONTINUE',
 					valor: [$1, $2]
 					};	}
-	| adentros RCONTINUE PTCOMA LLAVEDER{  $$ = { 
+	/*| adentros RCONTINUE PTCOMA LLAVEDER{  $$ = { 
 					tipo: 'POS_CONTINUE',
 					valor: [$1, $2, $3, $4]
-					};	}
+					};	}*/
 ;
 
 declaracionvar
@@ -308,6 +357,10 @@ asingacionuna
 	| IGUAL expresion PTCOMA {  $$ = { 
 					tipo: 'ASINGACION_UNA',
 					valor: [$1, $2, $3]
+					};	}
+	| IGUAL llamarmetodo {  $$ = { 
+					tipo: 'ASINGACION_UNA',
+					valor: [$1, $2]
 					};	}
 ;
 
@@ -497,6 +550,7 @@ expresionrelacional
 						$1, $2, $3
 					]
 					};	}
+	|expresion
 ;
 expresion
 	/*: MENOS expresion %prec UMENOS  {  $$ = { 
@@ -559,5 +613,12 @@ expresion
 					tipo: 'BOOL',
 					valor: $1
 					};	}
+	|CONTENIDOHTML {
+					contHtml+= $1
+					  $$ = { 
+					tipo: 'EXPRESION',
+					valor: $1
+					};
+					
+						}
 ;
-

@@ -4,13 +4,12 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 var parser = require('../gramatica');
-const parse = require('himalaya');
+//const parse = require('himalaya');
 
 //const html = fs.readFileSync('./hello.txt', {encoding: 'utf8'});
 //const json = parse(html);
 var himalaya = require('himalaya');
-var html = fs.readFileSync('./hello.html');
-var jsonSalida = himalaya.parse(html);
+
 
 let ast;
 global.globalast;
@@ -47,6 +46,7 @@ app.use(bodyParser.urlencoded( { extended: true}));
 var variablePrueba = "Randall ";
 var variableJsonPrincipal = "";
 var variableHtml = "";
+var variableTabla = "";
 
 app.get('/', (req,res)=>{
     console.log('estamos en get');
@@ -54,7 +54,8 @@ app.get('/', (req,res)=>{
     res.render('index.ejs', {
         variableJsonPrincipal: variableJsonPrincipal,
         variablePrueba : variablePrueba,
-        variableHtml : variableHtml
+        variableHtml : variableHtml,
+        variableTabla : variableTabla
     });
 
 });
@@ -66,22 +67,25 @@ app.post('/', function(request, response){
 
     ast = parser.parse(request.body.txtAreaEntrada.toString());
 
-    //fs.writeFileSync('./public/ast.json', JSON.stringify(ast, null, 2));
+    // haciendo el arbol ast.json
     fs.writeFileSync('./ast.json', JSON.stringify(ast, null, 2));
-    //console.log(ast);
-    console.log('leyendo html desde el servidor')
-    var jsonStr = JSON.stringify(jsonSalida)
-    console.log(jsonStr)
-
-
-    try {  
-        variableHtml = fs.readFileSync('./hello.txt', 'utf8');
-        //console.log(data.toString());    
-    } catch(e) {
-        console.log('Errorsito:', e.stack);
-    }
-
+    var lectura = fs.readFileSync('./tableHtml.txt', {encoding: 'utf8'});
+    console.log("leyendo html");
+    console.log(lectura);
+    variableHtml = lectura;
+    //console.log('leyendo html desde el servidor')
+   // var html = fs.readFileSync('./hello.html', {encoding: 'utf8'});
+    //var jsonSalida = himalaya.parse(html);
     
+    //var jsonStr = JSON.stringify(jsonSalida)
+   // console.log(jsonSalida)
+    
+    //console.log('termino de leer json')
+    // leyendo el html de console.write
+    //console.log(__dirname)
+    
+    
+
     var astString = JSON.stringify(ast);
     variablePrueba = "SALIDA HTML";
     variableJsonPrincipal = astString;

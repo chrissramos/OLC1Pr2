@@ -9,409 +9,103 @@
           "valor": [
             {
               "tipo": "instrucciones",
-              "valor": [
-                {
-                  "tipo": "instrucciones",
+              "valor": {
+                "tipo": "instruccion",
+                "valor": {
+                  "tipo": "ADENTRO",
                   "valor": [
+                    "Console",
+                    ".",
+                    "Write",
+                    "(",
                     {
-                      "tipo": "instrucciones",
+                      "tipo": "EXPRESION",
+                      "valor": "<h2>Llenar los campos</h2>"
+                    },
+                    ")",
+                    ";"
+                  ]
+                }
+              }
+            },
+            {
+              "tipo": "instruccion",
+              "valor": {
+                "tipo": "ADENTRO",
+                "valor": [
+                  "for",
+                  "(",
+                  {
+                    "tipo": "VARIABLE_FOR",
+                    "valor": [
+                      {
+                        "tipo": "TIPO_DATO",
+                        "valor": "int"
+                      },
+                      {
+                        "tipo": "IDENTIFICADOR",
+                        "valor": "i"
+                      }
+                    ]
+                  },
+                  "=",
+                  {
+                    "tipo": "EXPRESION",
+                    "valor": [
+                      {
+                        "tipo": "DECIMAL",
+                        "valor": "12"
+                      },
+                      "-",
+                      {
+                        "tipo": "DECIMAL",
+                        "valor": "1"
+                      }
+                    ]
+                  },
+                  ";",
+                  {
+                    "tipo": "EXP_REL",
+                    "valor": {
+                      "tipo": "EXP_REL",
                       "valor": [
                         {
-                          "tipo": "instrucciones",
-                          "valor": [
-                            {
-                              "tipo": "instrucciones",
-                              "valor": [
-                                {
-                                  "tipo": "instrucciones",
-                                  "valor": [
-                                    {
-                                      "tipo": "instrucciones",
-                                      "valor": [
-                                        {
-                                          "tipo": "instrucciones",
-                                          "valor": [
-                                            {
-                                              "tipo": "instrucciones",
-                                              "valor": [
-                                                {
-                                                  "tipo": "instrucciones",
-                                                  "valor": [
-                                                    {
-                                                      "tipo": "instrucciones",
-                                                      "valor": {
-                                                        "tipo": "instruccion",
-                                                        "valor": {
-                                                          "tipo": "MAIN",
-                                                          "valor": [
-                                                            "void",
-                                                            "main",
-                                                            "(",
-                                                            ")",
-                                                            "{",
-                                                            {
-                                                              "tipo": "ADENTROS",
-                                                              "valor": {
-                                                                "tipo": "ADENTRO",
-                                                                "valor": [
-                                                                  "Console",
-                                                                  ".",
-                                                                  "Write",
-                                                                  "(",
-                                                                  {
-                                                                    "tipo": "CUERPO_IMP",
-                                                                    "valor": {
-                                                                      "tipo": "CADENA",
-                                                                      "valor": "holi"
-                                                                    }
-                                                                  },
-                                                                  ")",
-                                                                  ";"
-                                                                ]
-                                                              }
-                                                            },
-                                                            "}"
-                                                          ]
-                                                        }
-                                                      }
-                                                    },
-                                                    {
-                                                      "tipo": "instruccion",
-                                                      "valor": {
-                                                        "tipo": "ADENTRO",
-                                                        "valor": {
-                                                          "tipo": "DECLARACION_VAR",
-                                                          "valor": [
-                                                            {
-                                                              "tipo": "TIPO_DATO",
-                                                              "valor": "string"
-                                                            },
-                                                            {
-                                                              "tipo": "LISTA_VARIABLES",
-                                                              "valor": [
-                                                                {
-                                                                  "tipo": "LISTA_VARIABLES",
-                                                                  "valor": [
-                                                                    {
-                                                                      "tipo": "LISTA_VARIABLES",
-                                                                      "valor": [
-                                                                        {
-                                                                          "tipo": "LISTA_VARIABLES",
-                                                                          "valor": {
-                                                                            "tipo": "VARIABLE",
-                                                                            "valor": {
-                                                                              "tipo": "IDENTIFICADOR",
-                                                                              "valor": "variable"
-                                                                            }
-                                                                          }
-                                                                        },
-                                                                        ",",
-                                                                        {
-                                                                          "tipo": "VARIABLE",
-                                                                          "valor": {
-                                                                            "tipo": "IDENTIFICADOR",
-                                                                            "valor": "variableDos"
-                                                                          }
-                                                                        }
-                                                                      ]
-                                                                    },
-                                                                    ",",
-                                                                    {
-                                                                      "tipo": "VARIABLE",
-                                                                      "valor": {
-                                                                        "tipo": "IDENTIFICADOR",
-                                                                        "valor": "variable3"
-                                                                      }
-                                                                    }
-                                                                  ]
-                                                                },
-                                                                ",",
-                                                                {
-                                                                  "tipo": "VARIABLE",
-                                                                  "valor": {
-                                                                    "tipo": "IDENTIFICADOR",
-                                                                    "valor": "variable4"
-                                                                  }
-                                                                }
-                                                              ]
-                                                            },
-                                                            {
-                                                              "tipo": "ASINGACION_UNA",
-                                                              "valor": [
-                                                                "=",
-                                                                {
-                                                                  "tipo": "CADENA",
-                                                                  "valor": "valor"
-                                                                },
-                                                                ";"
-                                                              ]
-                                                            }
-                                                          ]
-                                                        }
-                                                      }
-                                                    }
-                                                  ]
-                                                },
-                                                {
-                                                  "tipo": "instruccion",
-                                                  "valor": {
-                                                    "tipo": "ADENTRO",
-                                                    "valor": {
-                                                      "tipo": "DECLARACION_VAR",
-                                                      "valor": [
-                                                        {
-                                                          "tipo": "TIPO_DATO",
-                                                          "valor": "int"
-                                                        },
-                                                        {
-                                                          "tipo": "LISTA_VARIABLES",
-                                                          "valor": [
-                                                            {
-                                                              "tipo": "LISTA_VARIABLES",
-                                                              "valor": [
-                                                                {
-                                                                  "tipo": "LISTA_VARIABLES",
-                                                                  "valor": {
-                                                                    "tipo": "VARIABLE",
-                                                                    "valor": {
-                                                                      "tipo": "IDENTIFICADOR",
-                                                                      "valor": "a"
-                                                                    }
-                                                                  }
-                                                                },
-                                                                ",",
-                                                                {
-                                                                  "tipo": "VARIABLE",
-                                                                  "valor": {
-                                                                    "tipo": "IDENTIFICADOR",
-                                                                    "valor": "b"
-                                                                  }
-                                                                }
-                                                              ]
-                                                            },
-                                                            ",",
-                                                            {
-                                                              "tipo": "VARIABLE",
-                                                              "valor": {
-                                                                "tipo": "IDENTIFICADOR",
-                                                                "valor": "c"
-                                                              }
-                                                            }
-                                                          ]
-                                                        },
-                                                        {
-                                                          "tipo": "ASIGNACION_UNA",
-                                                          "valor": ";"
-                                                        }
-                                                      ]
-                                                    }
-                                                  }
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "tipo": "instruccion",
-                                              "valor": {
-                                                "tipo": "ADENTRO",
-                                                "valor": {
-                                                  "tipo": "DECLARACION_VAR",
-                                                  "valor": [
-                                                    {
-                                                      "tipo": "LISTA_VARIABLES",
-                                                      "valor": {
-                                                        "tipo": "VARIABLE",
-                                                        "valor": {
-                                                          "tipo": "IDENTIFICADOR",
-                                                          "valor": "a"
-                                                        }
-                                                      }
-                                                    },
-                                                    {
-                                                      "tipo": "ASINGACION_UNA",
-                                                      "valor": [
-                                                        "=",
-                                                        {
-                                                          "tipo": "DECIMAL",
-                                                          "valor": "5"
-                                                        },
-                                                        ";"
-                                                      ]
-                                                    }
-                                                  ]
-                                                }
-                                              }
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "tipo": "instruccion",
-                                          "valor": {
-                                            "tipo": "ADENTRO",
-                                            "valor": {
-                                              "tipo": "DECLARACION_VAR",
-                                              "valor": [
-                                                {
-                                                  "tipo": "LISTA_VARIABLES",
-                                                  "valor": [
-                                                    {
-                                                      "tipo": "LISTA_VARIABLES",
-                                                      "valor": {
-                                                        "tipo": "VARIABLE",
-                                                        "valor": {
-                                                          "tipo": "IDENTIFICADOR",
-                                                          "valor": "b"
-                                                        }
-                                                      }
-                                                    },
-                                                    ",",
-                                                    {
-                                                      "tipo": "VARIABLE",
-                                                      "valor": {
-                                                        "tipo": "IDENTIFICADOR",
-                                                        "valor": "c"
-                                                      }
-                                                    }
-                                                  ]
-                                                },
-                                                {
-                                                  "tipo": "ASINGACION_UNA",
-                                                  "valor": [
-                                                    "=",
-                                                    {
-                                                      "tipo": "DECIMAL",
-                                                      "valor": "18"
-                                                    },
-                                                    ";"
-                                                  ]
-                                                }
-                                              ]
-                                            }
-                                          }
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "tipo": "instruccion",
-                                      "valor": {
-                                        "tipo": "ADENTRO",
-                                        "valor": {
-                                          "tipo": "DECLARACION_VAR",
-                                          "valor": [
-                                            {
-                                              "tipo": "TIPO_DATO",
-                                              "valor": "int"
-                                            },
-                                            {
-                                              "tipo": "LISTA_VARIABLES",
-                                              "valor": {
-                                                "tipo": "VARIABLE",
-                                                "valor": {
-                                                  "tipo": "IDENTIFICADOR",
-                                                  "valor": "j"
-                                                }
-                                              }
-                                            },
-                                            {
-                                              "tipo": "ASINGACION_UNA",
-                                              "valor": [
-                                                "=",
-                                                {
-                                                  "tipo": "EXPRESION",
-                                                  "valor": [
-                                                    {
-                                                      "tipo": "DECIMAL",
-                                                      "valor": "8"
-                                                    },
-                                                    "*",
-                                                    {
-                                                      "tipo": "DECIMAL",
-                                                      "valor": "6"
-                                                    }
-                                                  ]
-                                                },
-                                                ";"
-                                              ]
-                                            }
-                                          ]
-                                        }
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "tipo": "instruccion",
-                                  "valor": {
-                                    "tipo": "ADENTRO",
-                                    "valor": {
-                                      "tipo": "DECLARACION_VAR",
-                                      "valor": [
-                                        {
-                                          "tipo": "TIPO_DATO",
-                                          "valor": "string"
-                                        },
-                                        {
-                                          "tipo": "LISTA_VARIABLES",
-                                          "valor": {
-                                            "tipo": "VARIABLE",
-                                            "valor": {
-                                              "tipo": "IDENTIFICADOR",
-                                              "valor": "var"
-                                            }
-                                          }
-                                        },
-                                        {
-                                          "tipo": "ASIGNACION_UNA",
-                                          "valor": ";"
-                                        }
-                                      ]
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "tipo": "instruccion",
-                              "valor": {
-                                "tipo": "ADENTRO",
-                                "valor": {
-                                  "tipo": "DECLARACION_VAR",
-                                  "valor": [
-                                    {
-                                      "tipo": "LISTA_VARIABLES",
-                                      "valor": {
-                                        "tipo": "VARIABLE",
-                                        "valor": {
-                                          "tipo": "IDENTIFICADOR",
-                                          "valor": "var"
-                                        }
-                                      }
-                                    },
-                                    {
-                                      "tipo": "ASINGACION_UNA",
-                                      "valor": [
-                                        "=",
-                                        {
-                                          "tipo": "CADENA",
-                                          "valor": "cadenaaaaa"
-                                        },
-                                        ";"
-                                      ]
-                                    }
-                                  ]
-                                }
-                              }
-                            }
-                          ]
+                          "tipo": "IDENTIFICADOR",
+                          "valor": "i"
                         },
+                        "<",
                         {
-                          "tipo": "instruccion",
-                          "valor": {
-                            "tipo": "ADENTRO",
+                          "tipo": "IDENTIFICADOR",
+                          "valor": "num5"
+                        }
+                      ]
+                    }
+                  },
+                  ";",
+                  {
+                    "tipo": "IDENTIFICADOR",
+                    "valor": "i"
+                  },
+                  {
+                    "tipo": "SUBIR_FOR",
+                    "valor": [
+                      "+",
+                      "+"
+                    ]
+                  },
+                  ")",
+                  "{",
+                  {
+                    "tipo": "POS_CONTINUE",
+                    "valor": [
+                      {
+                        "tipo": "ADENTROS",
+                        "valor": [
+                          {
+                            "tipo": "ADENTROS",
                             "valor": [
-                              "do",
-                              "{",
                               {
-                                "tipo": "POS_CONTINUE",
+                                "tipo": "ADENTROS",
                                 "valor": [
                                   {
                                     "tipo": "ADENTROS",
@@ -423,151 +117,27 @@
                                         "Write",
                                         "(",
                                         {
-                                          "tipo": "CUERPO_IMP",
-                                          "valor": "<HTML>\r\n                    <HEAD>\r\n                    Definiciones de la cabecera\r\n                    </HEAD>\r\n                    <BODY>"
+                                          "tipo": "EXPRESION",
+                                          "valor": "<label>Ingrese su nombre:</label>"
                                         },
                                         ")",
                                         ";"
                                       ]
                                     }
                                   },
-                                  "continue",
-                                  ";",
-                                  "}"
-                                ]
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "tipo": "instruccion",
-                      "valor": {
-                        "tipo": "METODO",
-                        "valor": [
-                          {
-                            "tipo": "TIPO_METODO",
-                            "valor": [
-                              {
-                                "tipo": "TIPO_DATO",
-                                "valor": "String"
-                              },
-                              {
-                                "tipo": "IDENTIFICADOR",
-                                "valor": "metodoUno"
-                              }
-                            ]
-                          },
-                          "(",
-                          {
-                            "tipo": "PARAMETROS_DENTRO",
-                            "valor": ")"
-                          },
-                          "{",
-                          {
-                            "tipo": "ADENTROS",
-                            "valor": [
-                              {
-                                "tipo": "ADENTROS",
-                                "valor": [
-                                  {
-                                    "tipo": "ADENTROS",
-                                    "valor": [
-                                      {
-                                        "tipo": "ADENTROS",
-                                        "valor": {
-                                          "tipo": "ADENTRO",
-                                          "valor": {
-                                            "tipo": "DECLARACION_VAR",
-                                            "valor": [
-                                              {
-                                                "tipo": "TIPO_DATO",
-                                                "valor": "string"
-                                              },
-                                              {
-                                                "tipo": "LISTA_VARIABLES",
-                                                "valor": {
-                                                  "tipo": "VARIABLE",
-                                                  "valor": {
-                                                    "tipo": "IDENTIFICADOR",
-                                                    "valor": "nombre"
-                                                  }
-                                                }
-                                              },
-                                              {
-                                                "tipo": "ASIGNACION_UNA",
-                                                "valor": ";"
-                                              }
-                                            ]
-                                          }
-                                        }
-                                      },
-                                      {
-                                        "tipo": "ADENTRO",
-                                        "valor": {
-                                          "tipo": "DECLARACION_VAR",
-                                          "valor": [
-                                            {
-                                              "tipo": "LISTA_VARIABLES",
-                                              "valor": {
-                                                "tipo": "VARIABLE",
-                                                "valor": {
-                                                  "tipo": "IDENTIFICADOR",
-                                                  "valor": "nombre"
-                                                }
-                                              }
-                                            },
-                                            {
-                                              "tipo": "ASINGACION_UNA",
-                                              "valor": [
-                                                "=",
-                                                {
-                                                  "tipo": "CADENA",
-                                                  "valor": "Randall"
-                                                },
-                                                ";"
-                                              ]
-                                            }
-                                          ]
-                                        }
-                                      }
-                                    ]
-                                  },
                                   {
                                     "tipo": "ADENTRO",
                                     "valor": [
-                                      "do",
-                                      "{",
+                                      "Console",
+                                      ".",
+                                      "Write",
+                                      "(",
                                       {
-                                        "tipo": "POS_CONTINUE",
-                                        "valor": [
-                                          {
-                                            "tipo": "ADENTROS",
-                                            "valor": {
-                                              "tipo": "ADENTRO",
-                                              "valor": [
-                                                "Console",
-                                                ".",
-                                                "Write",
-                                                "(",
-                                                {
-                                                  "tipo": "CUERPO_IMP",
-                                                  "valor": {
-                                                    "tipo": "CADENA",
-                                                    "valor": "estasmos en DOOO"
-                                                  }
-                                                },
-                                                ")",
-                                                ";"
-                                              ]
-                                            }
-                                          },
-                                          "continue",
-                                          ";",
-                                          "}"
-                                        ]
-                                      }
+                                        "tipo": "CADENA",
+                                        "valor": "asd"
+                                      },
+                                      ")",
+                                      ";"
                                     ]
                                   }
                                 ]
@@ -575,7 +145,7 @@
                               {
                                 "tipo": "ADENTRO",
                                 "valor": [
-                                  "while",
+                                  "if",
                                   "(",
                                   {
                                     "tipo": "EXP_REL",
@@ -584,12 +154,12 @@
                                       "valor": [
                                         {
                                           "tipo": "IDENTIFICADOR",
-                                          "valor": "x"
+                                          "valor": "i"
                                         },
-                                        "!=",
+                                        "==",
                                         {
-                                          "tipo": "BOOL",
-                                          "valor": "true"
+                                          "tipo": "DECIMAL",
+                                          "valor": "2"
                                         }
                                       ]
                                     }
@@ -597,7 +167,7 @@
                                   ")",
                                   "{",
                                   {
-                                    "tipo": "POS_CONTINUE",
+                                    "tipo": "FIN_IF",
                                     "valor": [
                                       {
                                         "tipo": "ADENTROS",
@@ -609,19 +179,14 @@
                                             "Write",
                                             "(",
                                             {
-                                              "tipo": "CUERPO_IMP",
-                                              "valor": {
-                                                "tipo": "CADENA",
-                                                "valor": "ESTAMOS EN WHILE"
-                                              }
+                                              "tipo": "EXPRESION",
+                                              "valor": "<br>"
                                             },
                                             ")",
                                             ";"
                                           ]
                                         }
                                       },
-                                      "continue",
-                                      ";",
                                       "}"
                                     ]
                                   }
@@ -630,368 +195,25 @@
                             ]
                           },
                           {
-                            "tipo": "POS_RETURN",
+                            "tipo": "ADENTRO",
                             "valor": [
-                              "return",
+                              "Console",
+                              ".",
+                              "Write",
+                              "(",
                               {
-                                "tipo": "CADENA",
-                                "valor": "hola"
+                                "tipo": "EXPRESION",
+                                "valor": "<input>"
                               },
+                              ")",
                               ";"
                             ]
                           }
                         ]
-                      }
-                    }
-                  ]
-                },
-                {
-                  "tipo": "instruccion",
-                  "valor": {
-                    "tipo": "METODO",
-                    "valor": [
-                      {
-                        "tipo": "TIPO_METODO",
-                        "valor": [
-                          {
-                            "tipo": "TIPO_DATO",
-                            "valor": "int"
-                          },
-                          {
-                            "tipo": "IDENTIFICADOR",
-                            "valor": "metodoDos"
-                          }
-                        ]
                       },
-                      "(",
-                      {
-                        "tipo": "PARAMETROS_DENTRO",
-                        "valor": [
-                          {
-                            "tipo": "LISTA_PARAMETROS",
-                            "valor": [
-                              {
-                                "tipo": "LISTA_PARAMETROS",
-                                "valor": {
-                                  "tipo": "PARAMETROS",
-                                  "valor": [
-                                    {
-                                      "tipo": "TIPO_DATO",
-                                      "valor": "string"
-                                    },
-                                    {
-                                      "tipo": "IDENTIFICADOR",
-                                      "valor": "cad1"
-                                    }
-                                  ]
-                                }
-                              },
-                              ",",
-                              {
-                                "tipo": "PARAMETROS",
-                                "valor": [
-                                  {
-                                    "tipo": "TIPO_DATO",
-                                    "valor": "int"
-                                  },
-                                  {
-                                    "tipo": "IDENTIFICADOR",
-                                    "valor": "var3"
-                                  }
-                                ]
-                              }
-                            ]
-                          },
-                          ")"
-                        ]
-                      },
-                      "{",
-                      {
-                        "tipo": "ADENTROS",
-                        "valor": [
-                          {
-                            "tipo": "ADENTROS",
-                            "valor": {
-                              "tipo": "ADENTRO",
-                              "valor": [
-                                "Switch",
-                                "(",
-                                {
-                                  "tipo": "IDENTIFICADOR",
-                                  "valor": "valor"
-                                },
-                                ")",
-                                "{",
-                                {
-                                  "tipo": "CASOS",
-                                  "valor": [
-                                    {
-                                      "tipo": "CASOS",
-                                      "valor": [
-                                        {
-                                          "tipo": "CASOS",
-                                          "valor": {
-                                            "tipo": "CASO_EVALUAR",
-                                            "valor": [
-                                              "case",
-                                              {
-                                                "tipo": "DECIMAL",
-                                                "valor": "1"
-                                              },
-                                              ":",
-                                              {
-                                                "tipo": "ADENTROS",
-                                                "valor": {
-                                                  "tipo": "ADENTRO",
-                                                  "valor": {
-                                                    "tipo": "DECLARACION_VAR",
-                                                    "valor": [
-                                                      {
-                                                        "tipo": "LISTA_VARIABLES",
-                                                        "valor": {
-                                                          "tipo": "VARIABLE",
-                                                          "valor": {
-                                                            "tipo": "IDENTIFICADOR",
-                                                            "valor": "a"
-                                                          }
-                                                        }
-                                                      },
-                                                      {
-                                                        "tipo": "ASINGACION_UNA",
-                                                        "valor": [
-                                                          "=",
-                                                          {
-                                                            "tipo": "DECIMAL",
-                                                            "valor": "85"
-                                                          },
-                                                          ";"
-                                                        ]
-                                                      }
-                                                    ]
-                                                  }
-                                                }
-                                              },
-                                              "break",
-                                              ";"
-                                            ]
-                                          }
-                                        },
-                                        {
-                                          "tipo": "CASO_EVALUAR",
-                                          "valor": [
-                                            "case",
-                                            {
-                                              "tipo": "DECIMAL",
-                                              "valor": "2"
-                                            },
-                                            ":",
-                                            {
-                                              "tipo": "ADENTROS",
-                                              "valor": {
-                                                "tipo": "ADENTRO",
-                                                "valor": {
-                                                  "tipo": "DECLARACION_VAR",
-                                                  "valor": [
-                                                    {
-                                                      "tipo": "LISTA_VARIABLES",
-                                                      "valor": {
-                                                        "tipo": "VARIABLE",
-                                                        "valor": {
-                                                          "tipo": "IDENTIFICADOR",
-                                                          "valor": "a"
-                                                        }
-                                                      }
-                                                    },
-                                                    {
-                                                      "tipo": "ASINGACION_UNA",
-                                                      "valor": [
-                                                        "=",
-                                                        {
-                                                          "tipo": "CADENA",
-                                                          "valor": "hola"
-                                                        },
-                                                        ";"
-                                                      ]
-                                                    }
-                                                  ]
-                                                }
-                                              }
-                                            },
-                                            "break",
-                                            ";"
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "tipo": "CASO_EVALUAR",
-                                      "valor": [
-                                        "default",
-                                        ":",
-                                        {
-                                          "tipo": "ADENTROS",
-                                          "valor": {
-                                            "tipo": "ADENTRO",
-                                            "valor": {
-                                              "tipo": "DECLARACION_VAR",
-                                              "valor": [
-                                                {
-                                                  "tipo": "LISTA_VARIABLES",
-                                                  "valor": {
-                                                    "tipo": "VARIABLE",
-                                                    "valor": {
-                                                      "tipo": "IDENTIFICADOR",
-                                                      "valor": "b"
-                                                    }
-                                                  }
-                                                },
-                                                {
-                                                  "tipo": "ASINGACION_UNA",
-                                                  "valor": [
-                                                    "=",
-                                                    {
-                                                      "tipo": "CADENA",
-                                                      "valor": "nadaaa"
-                                                    },
-                                                    ";"
-                                                  ]
-                                                }
-                                              ]
-                                            }
-                                          }
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                "}"
-                              ]
-                            }
-                          },
-                          {
-                            "tipo": "ADENTRO",
-                            "valor": [
-                              "for",
-                              "(",
-                              {
-                                "tipo": "VARIABLE_FOR",
-                                "valor": {
-                                  "tipo": "IDENTIFICADOR",
-                                  "valor": "a"
-                                }
-                              },
-                              "=",
-                              {
-                                "tipo": "DECIMAL",
-                                "valor": "2"
-                              },
-                              ";",
-                              {
-                                "tipo": "EXP_REL",
-                                "valor": {
-                                  "tipo": "EXP_REL",
-                                  "valor": [
-                                    {
-                                      "tipo": "IDENTIFICADOR",
-                                      "valor": "a"
-                                    },
-                                    "<",
-                                    {
-                                      "tipo": "DECIMAL",
-                                      "valor": "10"
-                                    }
-                                  ]
-                                }
-                              },
-                              ";",
-                              {
-                                "tipo": "IDENTIFICADOR",
-                                "valor": "a"
-                              },
-                              {
-                                "tipo": "SUBIR_FOR",
-                                "valor": [
-                                  "+",
-                                  "+"
-                                ]
-                              },
-                              ")",
-                              "{",
-                              {
-                                "tipo": "POS_CONTINUE",
-                                "valor": [
-                                  {
-                                    "tipo": "ADENTROS",
-                                    "valor": {
-                                      "tipo": "ADENTRO",
-                                      "valor": {
-                                        "tipo": "DECLARACION_VAR",
-                                        "valor": [
-                                          {
-                                            "tipo": "TIPO_DATO",
-                                            "valor": "string"
-                                          },
-                                          {
-                                            "tipo": "LISTA_VARIABLES",
-                                            "valor": {
-                                              "tipo": "VARIABLE",
-                                              "valor": {
-                                                "tipo": "IDENTIFICADOR",
-                                                "valor": "variable"
-                                              }
-                                            }
-                                          },
-                                          {
-                                            "tipo": "ASINGACION_UNA",
-                                            "valor": [
-                                              "=",
-                                              {
-                                                "tipo": "CADENA",
-                                                "valor": "hola"
-                                              },
-                                              ";"
-                                            ]
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  },
-                                  "continue",
-                                  ";",
-                                  "}"
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "POS_RETURN",
-                        "valor": "}"
-                      }
+                      "}"
                     ]
                   }
-                }
-              ]
-            },
-            {
-              "tipo": "instruccion",
-              "valor": {
-                "tipo": "ADENTRO",
-                "valor": [
-                  "Console",
-                  ".",
-                  "Write",
-                  "(",
-                  {
-                    "tipo": "CUERPO_IMP",
-                    "valor": {
-                      "tipo": "CADENA",
-                      "valor": "holaaaa "
-                    }
-                  },
-                  ")",
-                  ";"
                 ]
               }
             }
@@ -1000,540 +222,10 @@
         {
           "tipo": "instruccion",
           "valor": {
-            "tipo": "METODO",
+            "tipo": "ADENTRO",
             "valor": [
-              {
-                "tipo": "TIPO_METODO",
-                "valor": [
-                  "void",
-                  {
-                    "tipo": "IDENTIFICADOR",
-                    "valor": "metodoUno"
-                  }
-                ]
-              },
-              "(",
-              {
-                "tipo": "PARAMETROS_DENTRO",
-                "valor": ")"
-              },
-              "{",
-              {
-                "tipo": "ADENTROS",
-                "valor": [
-                  {
-                    "tipo": "ADENTROS",
-                    "valor": [
-                      {
-                        "tipo": "ADENTROS",
-                        "valor": [
-                          {
-                            "tipo": "ADENTROS",
-                            "valor": [
-                              {
-                                "tipo": "ADENTROS",
-                                "valor": [
-                                  {
-                                    "tipo": "ADENTROS",
-                                    "valor": [
-                                      {
-                                        "tipo": "ADENTROS",
-                                        "valor": [
-                                          {
-                                            "tipo": "ADENTROS",
-                                            "valor": {
-                                              "tipo": "ADENTRO",
-                                              "valor": [
-                                                "if",
-                                                "(",
-                                                {
-                                                  "tipo": "EXP_LOGICA",
-                                                  "valor": [
-                                                    {
-                                                      "tipo": "EXP_REL",
-                                                      "valor": [
-                                                        {
-                                                          "tipo": "IDENTIFICADOR",
-                                                          "valor": "a"
-                                                        },
-                                                        ">",
-                                                        {
-                                                          "tipo": "IDENTIFICADOR",
-                                                          "valor": "b"
-                                                        }
-                                                      ]
-                                                    },
-                                                    "&&",
-                                                    {
-                                                      "tipo": "EXP_REL",
-                                                      "valor": [
-                                                        {
-                                                          "tipo": "IDENTIFICADOR",
-                                                          "valor": "b"
-                                                        },
-                                                        ">",
-                                                        {
-                                                          "tipo": "IDENTIFICADOR",
-                                                          "valor": "c"
-                                                        }
-                                                      ]
-                                                    }
-                                                  ]
-                                                },
-                                                ")",
-                                                "{",
-                                                {
-                                                  "tipo": "FIN_IF",
-                                                  "valor": [
-                                                    {
-                                                      "tipo": "ADENTROS",
-                                                      "valor": {
-                                                        "tipo": "ADENTRO",
-                                                        "valor": {
-                                                          "tipo": "DECLARACION_VAR",
-                                                          "valor": [
-                                                            {
-                                                              "tipo": "TIPO_DATO",
-                                                              "valor": "string"
-                                                            },
-                                                            {
-                                                              "tipo": "LISTA_VARIABLES",
-                                                              "valor": {
-                                                                "tipo": "VARIABLE",
-                                                                "valor": {
-                                                                  "tipo": "IDENTIFICADOR",
-                                                                  "valor": "variablee"
-                                                                }
-                                                              }
-                                                            },
-                                                            {
-                                                              "tipo": "ASIGNACION_UNA",
-                                                              "valor": ";"
-                                                            }
-                                                          ]
-                                                        }
-                                                      }
-                                                    },
-                                                    "}"
-                                                  ]
-                                                }
-                                              ]
-                                            }
-                                          },
-                                          {
-                                            "tipo": "ADENTRO",
-                                            "valor": [
-                                              "else",
-                                              "if",
-                                              "(",
-                                              {
-                                                "tipo": "EXP_REL",
-                                                "valor": {
-                                                  "tipo": "EXP_REL",
-                                                  "valor": [
-                                                    {
-                                                      "tipo": "IDENTIFICADOR",
-                                                      "valor": "b"
-                                                    },
-                                                    "<",
-                                                    {
-                                                      "tipo": "IDENTIFICADOR",
-                                                      "valor": "a"
-                                                    }
-                                                  ]
-                                                }
-                                              },
-                                              ")",
-                                              "{",
-                                              {
-                                                "tipo": "FIN_IF",
-                                                "valor": [
-                                                  {
-                                                    "tipo": "ADENTROS",
-                                                    "valor": {
-                                                      "tipo": "ADENTRO",
-                                                      "valor": {
-                                                        "tipo": "DECLARACION_VAR",
-                                                        "valor": [
-                                                          {
-                                                            "tipo": "TIPO_DATO",
-                                                            "valor": "string"
-                                                          },
-                                                          {
-                                                            "tipo": "LISTA_VARIABLES",
-                                                            "valor": {
-                                                              "tipo": "VARIABLE",
-                                                              "valor": {
-                                                                "tipo": "IDENTIFICADOR",
-                                                                "valor": "variableeedos"
-                                                              }
-                                                            }
-                                                          },
-                                                          {
-                                                            "tipo": "ASIGNACION_UNA",
-                                                            "valor": ";"
-                                                          }
-                                                        ]
-                                                      }
-                                                    }
-                                                  },
-                                                  "}"
-                                                ]
-                                              }
-                                            ]
-                                          }
-                                        ]
-                                      },
-                                      {
-                                        "tipo": "ADENTRO",
-                                        "valor": [
-                                          "else",
-                                          "if",
-                                          "(",
-                                          {
-                                            "tipo": "EXP_REL",
-                                            "valor": {
-                                              "tipo": "EXP_REL",
-                                              "valor": [
-                                                {
-                                                  "tipo": "IDENTIFICADOR",
-                                                  "valor": "b"
-                                                },
-                                                "<",
-                                                {
-                                                  "tipo": "IDENTIFICADOR",
-                                                  "valor": "c"
-                                                }
-                                              ]
-                                            }
-                                          },
-                                          ")",
-                                          "{",
-                                          {
-                                            "tipo": "FIN_IF",
-                                            "valor": [
-                                              {
-                                                "tipo": "ADENTROS",
-                                                "valor": {
-                                                  "tipo": "ADENTRO",
-                                                  "valor": {
-                                                    "tipo": "DECLARACION_VAR",
-                                                    "valor": [
-                                                      {
-                                                        "tipo": "TIPO_DATO",
-                                                        "valor": "string"
-                                                      },
-                                                      {
-                                                        "tipo": "LISTA_VARIABLES",
-                                                        "valor": {
-                                                          "tipo": "VARIABLE",
-                                                          "valor": {
-                                                            "tipo": "IDENTIFICADOR",
-                                                            "valor": "variableeedos"
-                                                          }
-                                                        }
-                                                      },
-                                                      {
-                                                        "tipo": "ASIGNACION_UNA",
-                                                        "valor": ";"
-                                                      }
-                                                    ]
-                                                  }
-                                                }
-                                              },
-                                              "}"
-                                            ]
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "tipo": "ADENTRO",
-                                    "valor": [
-                                      "else",
-                                      "if",
-                                      "(",
-                                      {
-                                        "tipo": "EXP_REL",
-                                        "valor": {
-                                          "tipo": "EXP_REL",
-                                          "valor": [
-                                            {
-                                              "tipo": "CADENA",
-                                              "valor": "hola"
-                                            },
-                                            "==",
-                                            {
-                                              "tipo": "CADENA",
-                                              "valor": "hola"
-                                            }
-                                          ]
-                                        }
-                                      },
-                                      ")",
-                                      "{",
-                                      {
-                                        "tipo": "FIN_IF",
-                                        "valor": [
-                                          {
-                                            "tipo": "ADENTROS",
-                                            "valor": {
-                                              "tipo": "ADENTRO",
-                                              "valor": {
-                                                "tipo": "DECLARACION_VAR",
-                                                "valor": [
-                                                  {
-                                                    "tipo": "TIPO_DATO",
-                                                    "valor": "int"
-                                                  },
-                                                  {
-                                                    "tipo": "LISTA_VARIABLES",
-                                                    "valor": {
-                                                      "tipo": "VARIABLE",
-                                                      "valor": {
-                                                        "tipo": "IDENTIFICADOR",
-                                                        "valor": "pi"
-                                                      }
-                                                    }
-                                                  },
-                                                  {
-                                                    "tipo": "ASINGACION_UNA",
-                                                    "valor": [
-                                                      "=",
-                                                      {
-                                                        "tipo": "DECIMAL",
-                                                        "valor": "3.14"
-                                                      },
-                                                      ";"
-                                                    ]
-                                                  }
-                                                ]
-                                              }
-                                            }
-                                          },
-                                          "}"
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              {
-                                "tipo": "ADENTRO",
-                                "valor": [
-                                  "else",
-                                  "{",
-                                  {
-                                    "tipo": "FIN_IF",
-                                    "valor": [
-                                      {
-                                        "tipo": "ADENTROS",
-                                        "valor": {
-                                          "tipo": "ADENTRO",
-                                          "valor": {
-                                            "tipo": "DECLARACION_VAR",
-                                            "valor": [
-                                              {
-                                                "tipo": "TIPO_DATO",
-                                                "valor": "int"
-                                              },
-                                              {
-                                                "tipo": "LISTA_VARIABLES",
-                                                "valor": {
-                                                  "tipo": "VARIABLE",
-                                                  "valor": {
-                                                    "tipo": "IDENTIFICADOR",
-                                                    "valor": "variableee"
-                                                  }
-                                                }
-                                              },
-                                              {
-                                                "tipo": "ASIGNACION_UNA",
-                                                "valor": ";"
-                                              }
-                                            ]
-                                          }
-                                        }
-                                      },
-                                      "}"
-                                    ]
-                                  }
-                                ]
-                              }
-                            ]
-                          },
-                          {
-                            "tipo": "ADENTRO",
-                            "valor": [
-                              "if",
-                              "(",
-                              {
-                                "tipo": "EXP_LOGICA",
-                                "valor": [
-                                  {
-                                    "tipo": "EXP_REL",
-                                    "valor": [
-                                      {
-                                        "tipo": "IDENTIFICADOR",
-                                        "valor": "a"
-                                      },
-                                      ">",
-                                      {
-                                        "tipo": "IDENTIFICADOR",
-                                        "valor": "b"
-                                      }
-                                    ]
-                                  },
-                                  "||",
-                                  {
-                                    "tipo": "EXP_REL",
-                                    "valor": [
-                                      {
-                                        "tipo": "IDENTIFICADOR",
-                                        "valor": "a"
-                                      },
-                                      "<",
-                                      {
-                                        "tipo": "IDENTIFICADOR",
-                                        "valor": "c"
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              ")",
-                              "{",
-                              {
-                                "tipo": "FIN_IF",
-                                "valor": [
-                                  {
-                                    "tipo": "ADENTROS",
-                                    "valor": {
-                                      "tipo": "ADENTRO",
-                                      "valor": {
-                                        "tipo": "DECLARACION_VAR",
-                                        "valor": [
-                                          {
-                                            "tipo": "TIPO_DATO",
-                                            "valor": "string"
-                                          },
-                                          {
-                                            "tipo": "LISTA_VARIABLES",
-                                            "valor": {
-                                              "tipo": "VARIABLE",
-                                              "valor": {
-                                                "tipo": "IDENTIFICADOR",
-                                                "valor": "variablee"
-                                              }
-                                            }
-                                          },
-                                          {
-                                            "tipo": "ASIGNACION_UNA",
-                                            "valor": ";"
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  },
-                                  "}"
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "tipo": "ADENTRO",
-                        "valor": [
-                          "else",
-                          "{",
-                          {
-                            "tipo": "FIN_IF",
-                            "valor": [
-                              {
-                                "tipo": "ADENTROS",
-                                "valor": [
-                                  {
-                                    "tipo": "ADENTROS",
-                                    "valor": {
-                                      "tipo": "ADENTRO",
-                                      "valor": {
-                                        "tipo": "DECLARACION_VAR",
-                                        "valor": [
-                                          {
-                                            "tipo": "TIPO_DATO",
-                                            "valor": "int"
-                                          },
-                                          {
-                                            "tipo": "LISTA_VARIABLES",
-                                            "valor": {
-                                              "tipo": "VARIABLE",
-                                              "valor": {
-                                                "tipo": "IDENTIFICADOR",
-                                                "valor": "variableee"
-                                              }
-                                            }
-                                          },
-                                          {
-                                            "tipo": "ASIGNACION_UNA",
-                                            "valor": ";"
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  },
-                                  {
-                                    "tipo": "ADENTRO",
-                                    "valor": [
-                                      "Console",
-                                      ".",
-                                      "Write",
-                                      "(",
-                                      {
-                                        "tipo": "CUERPO_IMP",
-                                        "valor": {
-                                          "tipo": "CADENA",
-                                          "valor": " estamos en else"
-                                        }
-                                      },
-                                      ")",
-                                      ";"
-                                    ]
-                                  }
-                                ]
-                              },
-                              "}"
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tipo": "ADENTRO",
-                    "valor": [
-                      "Console",
-                      ".",
-                      "Write",
-                      "(",
-                      {
-                        "tipo": "CUERPO_IMP",
-                        "valor": " <h1>CONTENIDO HTML</h1> "
-                      },
-                      ")",
-                      ";"
-                    ]
-                  }
-                ]
-              },
-              {
-                "tipo": "POS_RETURN",
-                "valor": [
-                  "return",
-                  ";"
-                ]
-              }
+              "break",
+              ";"
             ]
           }
         }
@@ -1549,8 +241,8 @@
           "Write",
           "(",
           {
-            "tipo": "CUERPO_IMP",
-            "valor": " </BODY>\r\n</HTML> "
+            "tipo": "EXPRESION",
+            "valor": "<br>"
           },
           ")",
           ";"
