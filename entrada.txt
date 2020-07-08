@@ -2,7 +2,7 @@
 
 while(a < 10){
 Console.Write("el valor de a es: " + a);
-if((a >= "asd") && b <= 56){
+if(!variable){
   console.Write("adios");
   switch(variable){
   case 1:
@@ -14,6 +14,6 @@ if((a >= "asd") && b <= 56){
     default:
         Console.Write("No válido. Escoja 1, 2, o 3.");
 }
-}
+} 
 break;
 }

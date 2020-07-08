@@ -109,8 +109,10 @@ case 3:
 					valor: $$[$0] 
 				  };	
 break;
-case 4: case 10:
- console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); 
+case 4:
+ 
+			errorLexico += " <tr> <th> Sintactico </th> <th> " +   this._$.first_line + "</th> <th> " +  this._$.first_colum+ "</th> <th>" + " NO Debio venir " + yytext + " No es parte del lenguaje </th> </tr>" ; 
+		console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); 
 break;
 case 5: case 6: case 7:
   this.$ = { 
@@ -129,6 +131,9 @@ case 9:
 					tipo: 'ADENTROS',
 					valor: $$[$0]
 					};	
+break;
+case 10:
+ console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); 
 break;
 case 11: case 23:
   this.$ = { 

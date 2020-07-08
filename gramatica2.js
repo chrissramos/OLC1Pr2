@@ -154,7 +154,7 @@ case 29:
 this.$= $$[$0-1]+$$[$0];  
 break;
 case 31:
-this.$= expresion + ":" + $$[$0-2] + "\n";  
+this.$= "case" + ":" + $$[$0-2] + "\n";  
 break;
 case 34:
 this.$= $$[$0] ;  

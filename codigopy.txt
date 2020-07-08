@@ -1,12 +1,14 @@
-print(<h2>Llenar los campos</h2>)
-for iin range (12-1,): 
-print(<label>Ingrese su nombre:</label>)
-print(asd)
-if i==2:
-print(<br>)
+while a <10:print(el valor de a es: +a)
+if  not variable:
+print(adios)
+def switch(variable): case:precio = 55
 
+case:precio = 25
 
-print(<input>)
+case:precio = 40
+
+default
 
 break 
-print(<br>)
+
+

@@ -1,5 +1,5 @@
 var fs = require('fs'); 
-var parser = require('./gramatica');
+var parser = require('./gramatica2');
 var entradaArchivo = require('./src/public/js/acciones');
 //var textoAnalizar = require();
 

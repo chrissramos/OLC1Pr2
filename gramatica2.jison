@@ -185,7 +185,7 @@ casos
 ;
 
 casoevaluar
-	:RCASE expresion DOSPUNTOS adentros RBREAK PTCOMA {$$= expresion + ":" + $4 + "\n";  } 
+	:RCASE expresion DOSPUNTOS adentros RBREAK PTCOMA {$$= "case" + ":" + $4 + "\n";  } 
 	| RDEFAULT DOSPUNTOS adentros 
 ;
 

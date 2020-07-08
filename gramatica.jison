@@ -133,7 +133,9 @@ instrucciones
 					tipo: 'instrucciones',
 					valor: $1 
 				  };	}
-	| error { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
+	| error { 
+			errorLexico += " <tr> <th> Sintactico </th> <th> " +   this._$.first_line + "</th> <th> " +  this._$.first_colum+ "</th> <th>" + " NO Debio venir " + yytext + " No es parte del lenguaje </th> </tr>" ; 
+		console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
 /*
 instruccion
@@ -519,6 +521,8 @@ expresionlogica
 					tipo: 'EXP_REL',
 					valor:$1
 					};	}
+	
+	
 ;
 
 expresionrelacional
@@ -604,7 +608,8 @@ expresion
 					valor:[
 						$1, $2, $3
 					]
-					};	}	
+					};	}
+	
 	|CADENA {  $$ = { 
 					tipo: 'CADENA',
 					valor: $1
