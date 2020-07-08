@@ -30,8 +30,6 @@ app.set('views', path.join(__dirname, 'frontend'));
 //app.use(require('./routes/index'));
 
 
-
-
 //static files
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -51,6 +49,7 @@ var variableHtml = "";
 var variableTabla = "";
 var variableHtmlAJson = "";
 var variableErrores = "";
+var variablepy = "";
 
 app.get('/', (req,res)=>{
     console.log('estamos en get');
@@ -61,7 +60,8 @@ app.get('/', (req,res)=>{
         variableHtml : variableHtml,
         variableTabla : variableTabla,
         variableHtmlAJson : variableHtmlAJson,
-        variableErrores : variableErrores
+        variableErrores : variableErrores,
+        variablepy : variablepy
     });
 
 });
@@ -72,6 +72,7 @@ app.post('/', function(request, response){
     //parser.parse(request.body.txtAreaEntrada.toString());
 
     ast = parser.parse(request.body.txtAreaEntrada.toString());
+    parserDos.parse(request.body.txtAreaEntrada.toString());
 
     // haciendo el arbol ast.json
     fs.writeFileSync('./ast.json', JSON.stringify(ast, null, 2));
@@ -89,17 +90,24 @@ app.post('/', function(request, response){
     console.log('Errores: ')
     console.log(lecturaErrores)
     variableErrores = lecturaErrores;
-    
+
     var astString = JSON.stringify(ast);
     variablePrueba = "SALIDA HTML";
     variableJsonPrincipal = astString;
     
+
+    //python
+    var lecturaPython = fs.readFileSync('./codigopy.txt', {encoding: 'utf8'});
+    variablepy = lecturaPython;
+
+
     response.render('index.ejs', {
         variableJsonPrincipal: variableJsonPrincipal,
         variablePrueba : variablePrueba,
         variableHtml : variableHtml,
         variableHtmlAJson : variableHtmlAJson,
-        variableErrores : variableErrores
+        variableErrores : variableErrores,
+        variablepy : variablepy
     });
         
     //response.redirect("./")

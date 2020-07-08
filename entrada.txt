@@ -1,13 +1,19 @@
-Console.Write('<h2>Llenar los campos</h2>');
-                                                  for(int i = 12-1; i < num5; i++){
-                                                    Console.Write('<label>Ingrese su nombre:</label>');
-							Console.Write("asd");
-                                                            if(i == 2){
-                                                              Console.Write('<br>');
-                                                                    
-                                                            }
-                                                            Console.Write('<input>');
-                                                  }
-                                                  break;
-%
-                                                  Console.Write('<br>');
+
+
+while(a < 10){
+Console.Write("el valor de a es: " + a);
+if((a >= "asd") && b <= 56){
+  console.Write("adios");
+  switch(variable){
+  case 1:
+    precio = 55; break;
+  case 2:
+    precio = 25; break;
+  case 3:
+    precio = 40; break; 
+    default:
+        Console.Write("No válido. Escoja 1, 2, o 3.");
+}
+}
+break;
+}

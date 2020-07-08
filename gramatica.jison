@@ -80,9 +80,8 @@
 (\'[^']*\')							{ yytext = yytext.substr(1,yyleng-2); return 'CONTENIDOHTML'; } 
 //(\"[^"]*\")\b 							return 'CADENA';
 \"[^\"]*\"								{ yytext = yytext.substr(1,yyleng-2); return 'CADENA'; } 
-//  "/""/".*\b  							return 'COMENTSIMPLE';
-//  [/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]\b 	return 'COMENTMULTI';
-
+("//".*\r\n)|("//".*\n)|("//.*\r")				  //Comentario Simple
+"/*""/"*([^*/]|[^*]"/"|"*"[^/])*"*"*"*/" 			//Comentario Multi			
 
 
 <<EOF>>				return 'EOF';
@@ -293,6 +292,10 @@ casoevaluar
 					tipo: 'CASO_EVALUAR',
 					valor: [$1, $2, $3]
 					};	}
+;
+
+posbreak
+	: 
 ;
 
 variablefor
@@ -531,13 +534,13 @@ expresionrelacional
 						$1, $2, $3
 					]
 					};	}
-	|expresion MAYORIGUAL expresion {  $$ = { 
+	|expresion MAYOR IGUAL expresion {  $$ = { 
 					tipo: 'EXP_REL',
 					valor:[
 						$1, $2, $3
 					]
 					};	}
-	|expresion MENORIGUAL expresion {  $$ = { 
+	|expresion MENOR IGUAL expresion {  $$ = { 
 					tipo: 'EXP_REL',
 					valor:[
 						$1, $2, $3

@@ -80,8 +80,9 @@
 (\'[^']*\')							{ yytext = yytext.substr(1,yyleng-2); return 'CONTENIDOHTML'; } 
 //(\"[^"]*\")\b 							return 'CADENA';
 \"[^\"]*\"								{ yytext = yytext.substr(1,yyleng-2); return 'CADENA'; } 
-//  "/""/".*\b  							return 'COMENTSIMPLE';
-//  [/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]\b 	return 'COMENTMULTI';
+
+("//".*\r\n)|("//".*\n)|("//.*\r")				  //Comentario Simple
+"/*""/"*([^*/]|[^*]"/"|"*"[^/])*"*"*"*/" 			//Comentario Multi			
 
 
 
@@ -113,13 +114,14 @@ var errorLexico = "<table> <tr> <th>Tipo error</th> <th>Linea </th> <th>Columna 
 
 ini
 	: instrucciones EOF { 
+		fs.writeFileSync('./codigopy.txt', $1);
 		console.log($1)
 		return $1;
 		}
 ;
 instrucciones
-	: instrucciones instruccion 
-	| instruccion 
+	: instrucciones instruccion  {$$ = $1 +$2;}
+	| instruccion  {$$ = $1;}
 	| error { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
 /*
@@ -132,71 +134,64 @@ instruccion
 // sh compilar.sh
 // node parser
 instruccion
-	:	main  
-	| 	metodo 
-	| adentro 
+	:	main  {$$= $1;  }
+	| 	metodo {$$= $1;  }
+	| adentro {$$ = $1;} 
 ;
 adentros
-	: adentros adentro  
-	|adentro
+	: adentros adentro {$$ = $1 + $2 ;} 
+	|adentro {$$ = [$1];}
 	| error { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
 adentro
-	: declaracionvar 
-	|RCONSOLE PUNTO RWRITE PARIZQ expresion PARDER PTCOMA
-	|RIF PARIZQ expresionlogica PARDER LLAVEIZQ finif
-	|RELSE LLAVEIZQ finif 
-	|RELSE RIF PARIZQ expresionlogica PARDER LLAVEIZQ finif 
+	: declaracionvar {$$= $1;  }
+	|RCONSOLE PUNTO RWRITE PARIZQ expresion PARDER PTCOMA { $$ = "print("+ $5+ ")\n";  }
+	|RIF PARIZQ expresionlogica PARDER LLAVEIZQ finif {$$= "if " + $3 +":\n" + $6 + "\n" ;  }
+	|RELSE LLAVEIZQ finif  {$$= "else: \n" +  $3 + "\n"; }
+	|RELSE RIF PARIZQ expresionlogica PARDER LLAVEIZQ finif {$$= "elif " + $4 + ":\n" + $7 + "\n" ;  }
 	
-	|RFOR PARIZQ variablefor  IGUAL expresion PTCOMA expresionlogica PTCOMA expresion subirfor PARDER LLAVEIZQ  poscontinue 
+	|RFOR PARIZQ variablefor  IGUAL expresion PTCOMA expresionlogica PTCOMA expresion subirfor PARDER LLAVEIZQ  poscontinue  {$$= "for " + $3 + "in range (" + $5 + ",): \n" + $13 ;  } 
 					
-	|RWHILE PARIZQ expresionlogica PARDER LLAVEIZQ  poscontinue
-	|RDO LLAVEIZQ  poscontinue 
-	|RWHILE PARIZQ expresionlogica PARDER PTCOMA
+	|RWHILE PARIZQ expresionlogica PARDER LLAVEIZQ  poscontinue {$$= "while " + $3 + ":" + $6 + "\n";  }
+	|RDO LLAVEIZQ  poscontinue  {$$= "while" + $3 + "\n" ;  }
+	|RWHILE PARIZQ expresionlogica PARDER PTCOMA {$$= "while(" + $3 + "): \n" ;  }
 	
-	|RSWITCH PARIZQ expresion PARDER LLAVEIZQ casos LLAVEDER 
+	|RSWITCH PARIZQ expresion PARDER LLAVEIZQ casos LLAVEDER  {$$= "def switch(" + $3 + "): " + $6; + "\n" }
 				
-	|RCONTINUE PTCOMA 
-	|RBREAK PTCOMA
-	|llamarmetodo 
+	|RCONTINUE PTCOMA {$$= "continue \n";  }
+	|RBREAK PTCOMA {$$= "break \n";  }
+	|llamarmetodo {$$= $1;  }
 	
 ;
 
 llamarmetodo
-	: IDENTIFICADOR PARIZQ PARDER PTCOMA
-	| IDENTIFICADOR PARIZQ listapar PARDER  PTCOMA {  $$ = { 
-					tipo: 'LLAMARMETODO',
-					valor: [$1, $2, $3, $4, $5]
-					};	}
+	: IDENTIFICADOR PARIZQ PARDER PTCOMA {$$= $1 + "()\n";  }
+	| IDENTIFICADOR PARIZQ listapar PARDER  PTCOMA {$$= $1 + "(" + $3 + ")\n";  } 
 ;
 listapar
-	: listapar COMA par 
-	|par 
+	: listapar COMA par  {$$= $1 + ", " + $3;  }
+	|par {$$= $1;  }
 ;
 
 par 
-	: IDENTIFICADOR 
+	: IDENTIFICADOR {$$= $1;  }
 ;
 
 
-CUERPOIMP
-	:expresion 
-	|CONTENIDOHTML 
-	
-;
+
 casos
-	:casos casoevaluar 
-	|casoevaluar
+	:casos casoevaluar {$$= $1+$2;  } 
+	|casoevaluar {$$= $1;  }
 ;
 
 casoevaluar
-	:RCASE expresion DOSPUNTOS adentros RBREAK PTCOMA
-	| RDEFAULT DOSPUNTOS adentros  
+	:RCASE expresion DOSPUNTOS adentros RBREAK PTCOMA {$$= expresion + ":" + $4 + "\n";  } 
+	| RDEFAULT DOSPUNTOS adentros 
 ;
 
 variablefor
-	: tipodato expresion 
-	|expresion 
+	: tipodato expresion {$$= $2;  }  
+	|expresion {$$= $1 ;  } 
 ;
 
 subirfor
@@ -205,91 +200,91 @@ subirfor
 ;
 
 finif
-	: LLAVEDER
-	| adentros LLAVEDER 
+	: LLAVEDER{$$= "\n";  }
+	| adentros LLAVEDER {$$= $1 + "\n";  } 
 ;
 
 poscontinue
-	: LLAVEDER
-	| adentros LLAVEDER
+	: LLAVEDER  {$$= "\n";  }
+	| adentros LLAVEDER {$$= $1 + "\n";  }
 
 ;
 
 declaracionvar
-	: tipodato listavariables asingacionuna 
-	|listavariables asingacionuna 
+	: tipodato listavariables asingacionuna {$$= $1+ $2+ $3;  }
+	|listavariables asingacionuna  {$$= $1 + $2  ;  }
 ;
 
 asingacionuna 
-	: PTCOMA
-	| IGUAL expresion PTCOMA 
-	| IGUAL llamarmetodo
+	: PTCOMA {$$= "\n";  }
+	| IGUAL expresion PTCOMA {$$= " = " + $2 +"\n" ;  }
+	| IGUAL llamarmetodo {$$= "= " + $2; + "\n"  }
 ;
 
 listavariables 
-	: listavariables COMA variablesls 
-	| variablesls
+	: listavariables COMA variablesls  {$$= $1 +","  + $2;  }
+	| variablesls {$$= $1;  }
 ;
 
 variablesls 
-	: expresion
+	: expresion {$$= $1;  }
 ;
 
 main
-	: RVOID RMAIN  PARIZQ PARDER LLAVEIZQ adentros LLAVEDER
+	: RVOID RMAIN  PARIZQ PARDER LLAVEIZQ adentros LLAVEDER {$$= "def main (): \n " + $6 +"\n"  ;  }
 ;
 
 tipodato
-	: RSTRING
-	| RINT 
-	| RDOUBLE 
-	| RCHAR 
+	: RSTRING { $$ = "var";}
+	| RINT  { $$ = "var";}
+	| RDOUBLE  { $$ = "var";}
+	| RCHAR  { $$ = "var";}
 ;
 
 metodo
-	: tipometodo  PARIZQ parametrosdentro  LLAVEIZQ adentros posreturn  
+	: tipometodo  PARIZQ parametrosdentro  LLAVEIZQ adentros posreturn { $$ = $1+ "(" + $3 + ":\n" + $5 + $6 ;} 
 ;
 
 posreturn
-	: LLAVEDER 
-	| RRETURN PTCOMA LLAVEDER
-	| RRETURN expresion PTCOMA LLAVEDER 
+	: LLAVEDER {$$= "\n";  }
+	| RRETURN PTCOMA LLAVEDER {$$= "return\n" ;  }
+	| RRETURN expresion PTCOMA LLAVEDER {$$= "return\n"+ $2 + "\n";  }
 ;
 
 tipometodo
-	: tipodato expresion 
-	| RVOID expresion
+	: tipodato expresion { $$ = " def " + $2;}
+	| RVOID expresion { $$ = " def " + $1 ;}
 ;
 
 parametrosdentro
-	: PARDER 
-	| listaparametros PARDER
+	: PARDER { $$ = ")";}
+	| listaparametros PARDER { $$ = $1 + ")";}
 ;
 
 listaparametros
-	: listaparametros COMA parametros
-	| parametros
+	: listaparametros COMA parametros { $$ = $1 +"," + $3;}
+	| parametros { $$ = $1;}
 ;
 
 parametros
-	: tipodato expresion 
+	: tipodato expresion { $$ = "var" + $1;}
 ;
 
 expresionlogica
-	:expresionrelacional ANDY expresionrelacional
-	|expresionrelacional ORO expresionrelacional 
-	|ADMIRACION expresionrelacional 
-	|expresionrelacional 
+	:expresionrelacional ANDY expresionrelacional { $$ = $1 + " and "+ $3; }
+	|expresionrelacional ORO expresionrelacional { $$ = $1 + " or "+ $3; }
+	|ADMIRACION expresionrelacional  { $$ =  " not "+ $2; }
+	|expresionrelacional { $$ = $1;}
 ;
 
 expresionrelacional
-	:expresion  MAYOR expresion 
-	|expresion MENOR expresion 
-	|expresion MAYORIGUAL expresion 
-	|expresion MENORIGUAL expresion
-	|expresion IGUALES expresion 
-	|expresion DISTINTO expresion 
-	|expresion
+	:expresion  MAYOR expresion { $$ = $1 + " >"+ $3; }
+	|expresion MENOR expresion  { $$ = $1+ " <"+ $3; }
+	|expresion MAYOR IGUAL expresion  { $$ = $1+ " >="+ $3; }
+	|expresion MENOR IGUAL expresion { $$ = $1 +" <="+ $3; }
+	|expresion IGUALES expresion  { $$ = $1 +"=="+ $3; }
+	|expresion DISTINTO expresion  { $$ = $1+ "!=" +$3; }
+	|expresion { $$ = $1; }
 ;
 expresion
 	/*: MENOS expresion %prec UMENOS  {  $$ = { 
@@ -298,16 +293,16 @@ expresion
 						$1, $2 , $3
 					]
 					};	}    //	{ $$ = $2 *-1; }
-	|*/: expresion MAS expresion	
-	| expresion MENOS expresion
-	| expresion POR expresion		
-	| expresion DIVIDIDO expresion
-	| ENTERO					
-	| DECIMAL				
-	| PARIZQ expresion PARDER
-	|CADENA 
-	|IDENTIFICADOR 
-	|RTRUE
-	|RFALSE 
-	|CONTENIDOHTML 
+	|*/: expresion MAS expresion { $$ = $1 + "+" + $3; }	
+	| expresion MENOS expresion { $$ = $1 + "-"+ $3; }
+	| expresion POR expresion		{ $$ = $1 + "*"+ $3; }
+	| expresion DIVIDIDO expresion{ $$ = $1 + "/" +$3; }
+	| ENTERO			{ $$ = $1; }		
+	| DECIMAL			{ $$ = $1; }	
+	| PARIZQ expresion PARDER { $$ = "(" + $2 + ")"; }
+	|CADENA 				{ $$ = $1; }
+	|IDENTIFICADOR  		{ $$ = $1; }
+	|RTRUE					{ $$ = $1; }
+	|RFALSE 				{ $$ = $1; }
+	|CONTENIDOHTML 			{ $$ = $1; }
 ;
