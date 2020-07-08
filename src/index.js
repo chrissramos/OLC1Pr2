@@ -50,6 +50,7 @@ var variableJsonPrincipal = "";
 var variableHtml = "";
 var variableTabla = "";
 var variableHtmlAJson = "";
+var variableErrores = "";
 
 app.get('/', (req,res)=>{
     console.log('estamos en get');
@@ -59,7 +60,8 @@ app.get('/', (req,res)=>{
         variablePrueba : variablePrueba,
         variableHtml : variableHtml,
         variableTabla : variableTabla,
-        variableHtmlAJson : variableHtmlAJson
+        variableHtmlAJson : variableHtmlAJson,
+        variableErrores : variableErrores
     });
 
 });
@@ -74,17 +76,20 @@ app.post('/', function(request, response){
     // haciendo el arbol ast.json
     fs.writeFileSync('./ast.json', JSON.stringify(ast, null, 2));
     var lectura = fs.readFileSync('./tableHtml.txt', {encoding: 'utf8'});
-    console.log("leyendo html");
-    console.log(lectura);
+    //console.log("leyendo html");
+    //console.log(lectura);
     variableHtml = lectura;
-
     var jsonHt = html2json(lectura);
-    //console.log('------YA ES JSON-----------')
     var jsonEnString = JSON.stringify(jsonHt, ' ', ' ')
     //console.log(JSON.stringify(jsonHt, ' ', ' '));
     variableHtmlAJson = jsonEnString;
     
-
+    //ERRORES
+    var lecturaErrores = fs.readFileSync('./errores.txt', {encoding: 'utf8'});
+    console.log('Errores: ')
+    console.log(lecturaErrores)
+    variableErrores = lecturaErrores;
+    
     var astString = JSON.stringify(ast);
     variablePrueba = "SALIDA HTML";
     variableJsonPrincipal = astString;
@@ -93,7 +98,8 @@ app.post('/', function(request, response){
         variableJsonPrincipal: variableJsonPrincipal,
         variablePrueba : variablePrueba,
         variableHtml : variableHtml,
-        variableHtmlAJson : variableHtmlAJson
+        variableHtmlAJson : variableHtmlAJson,
+        variableErrores : variableErrores
     });
         
     //response.redirect("./")

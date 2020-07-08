@@ -64,6 +64,13 @@ function cargarEntrada() {
 
   }*/
 
+  function llenarErrores(){
+    alert("vamos a hacer la tabla")
+    var x = document.getElementById("myTextarea").value;
+    document.getElementById("divErrores").appendChild(x);
+    //alert(x)
+  }
+
   function analizar(){
     //cargar cosas
       alert("cargar datos a textareas");

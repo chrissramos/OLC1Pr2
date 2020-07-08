@@ -98,6 +98,7 @@
 var fs = require('fs');
 var contHtml = "";	
 var errorLexico = "<table> <tr> <th>Tipo error</th> <th>Linea </th> <th>Columna </th> <th>Descripcion </th> </tr> ";
+
 %}
 
 /* Asociación de operadores y precedencia */
@@ -112,23 +113,13 @@ var errorLexico = "<table> <tr> <th>Tipo error</th> <th>Linea </th> <th>Columna 
 
 ini
 	: instrucciones EOF { 
-		console.log('Termino analisis 2 ');
-		contHtml += "</table>";
-		//console.log(contHtml);
-		//fs.writeFileSync('./tableHtml.txt', contHtml);
-		
+		console.log($1)
 		return $1;
 		}
 ;
 instrucciones
-	: instrucciones instruccion  {  $$ = { 
-					tipo: 'instrucciones',
-					valor: [$1,$2]
-				  };	}
-	| instruccion {  $$ = { 
-					tipo: 'instrucciones',
-					valor: $1 
-				  };	}
+	: instrucciones instruccion 
+	| instruccion 
 	| error { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
 /*
@@ -141,415 +132,163 @@ instruccion
 // sh compilar.sh
 // node parser
 instruccion
-	:	main  {  $$ = { 
-					tipo: 'instruccion',
-					valor: $1
-					};	}
-	| 	metodo {  $$ = { 
-					tipo: 'instruccion',
-					valor: $1
-					};	}
-	| adentro  {  $$ = { 
-					tipo: 'instruccion',
-					valor: $1
-					};	}
+	:	main  
+	| 	metodo 
+	| adentro 
 ;
 adentros
-	: adentros adentro  {  $$ = { 
-					tipo: 'ADENTROS',
-					valor: [$1, $2]
-					};	}
-	|adentro {  $$ = { 
-					tipo: 'ADENTROS',
-					valor: $1
-					};	}
+	: adentros adentro  
+	|adentro
 	| error { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
 adentro
-	: declaracionvar {  $$ = { 
-					tipo: 'ADENTRO',
-					valor: $1
-					};	}
-	|RCONSOLE PUNTO RWRITE PARIZQ expresion PARDER PTCOMA {  $$ = { 
-					tipo: 'ADENTRO',
-					valor: [$1, $2, $3, $4, $5, $6, $7]
-					};	}
-	|RIF PARIZQ expresionlogica PARDER LLAVEIZQ finif {  $$ = { 
-					tipo: 'ADENTRO',
-					valor: [$1, $2, $3, $4, $5, $6]
-					};	}
-	|RELSE LLAVEIZQ finif {  $$ = { 
-					tipo: 'ADENTRO',
-					valor: [$1, $2, $3]
-					};	}
-	|RELSE RIF PARIZQ expresionlogica PARDER LLAVEIZQ finif {  $$ = { 
-					tipo: 'ADENTRO',
-					valor: [$1, $2, $3, $4, $5, $6, $7]
-					};	}
+	: declaracionvar 
+	|RCONSOLE PUNTO RWRITE PARIZQ expresion PARDER PTCOMA
+	|RIF PARIZQ expresionlogica PARDER LLAVEIZQ finif
+	|RELSE LLAVEIZQ finif 
+	|RELSE RIF PARIZQ expresionlogica PARDER LLAVEIZQ finif 
 	
-	|RFOR PARIZQ variablefor  IGUAL expresion PTCOMA expresionlogica PTCOMA expresion subirfor PARDER LLAVEIZQ  poscontinue {  $$ = { 
-					tipo: 'ADENTRO',
-					valor: [$1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13]
-					};	}
-	|RWHILE PARIZQ expresionlogica PARDER LLAVEIZQ  poscontinue{  $$ = { 
-					tipo: 'ADENTRO',
-					valor: [$1, $2, $3, $4, $5, $6]
-					};	}
-	|RDO LLAVEIZQ  poscontinue {  $$ = { 
-					tipo: 'ADENTRO',
-					valor: [$1, $2, $3]
-					};	}
-	|RWHILE PARIZQ expresionlogica PARDER PTCOMA {  $$ = { 
-					tipo: 'ADENTRO',
-					valor: [$1, $2, $3, $4, $5]
-					};	}
+	|RFOR PARIZQ variablefor  IGUAL expresion PTCOMA expresionlogica PTCOMA expresion subirfor PARDER LLAVEIZQ  poscontinue 
+					
+	|RWHILE PARIZQ expresionlogica PARDER LLAVEIZQ  poscontinue
+	|RDO LLAVEIZQ  poscontinue 
+	|RWHILE PARIZQ expresionlogica PARDER PTCOMA
 	
 	|RSWITCH PARIZQ expresion PARDER LLAVEIZQ casos LLAVEDER 
-				{  $$ = { 
-					tipo: 'ADENTRO',
-					valor: [$1, $2, $3, $4, $5, $6, $7]
-					};	}
-	|RCONTINUE PTCOMA {  $$ = { 
-					tipo: 'ADENTRO',
-					valor: [$1, $2]
-					};	}
-	|RBREAK PTCOMA{  $$ = { 
-					tipo: 'ADENTRO',
-					valor: [$1, $2]
-					};	}
+				
+	|RCONTINUE PTCOMA 
+	|RBREAK PTCOMA
 	|llamarmetodo 
-	{  $$ = { 
-					tipo: 'ADENTRO',
-					valor: $1
-					};	}
+	
 ;
 
 llamarmetodo
-	: IDENTIFICADOR PARIZQ PARDER PTCOMA {  $$ = { 
-					tipo: 'LLAMARMETODO',
-					valor: [$1, $2, $3, $4]
-					};	}
+	: IDENTIFICADOR PARIZQ PARDER PTCOMA
 	| IDENTIFICADOR PARIZQ listapar PARDER  PTCOMA {  $$ = { 
 					tipo: 'LLAMARMETODO',
 					valor: [$1, $2, $3, $4, $5]
 					};	}
 ;
 listapar
-	: listapar COMA par {  $$ = { 
-					tipo: 'LISTAPAR',
-					valor: [$1, $2, $3]
-					};	}
-	|par {  $$ = { 
-					tipo: 'LISTAPAR',
-					valor: $1
-					};	}
+	: listapar COMA par 
+	|par 
 ;
 
 par 
-	: IDENTIFICADOR {  $$ = { 
-					tipo: 'PAR',
-					valor: $1
-					};	}
+	: IDENTIFICADOR 
 ;
 
 
 CUERPOIMP
-	:expresion {  $$ = { 
-					tipo: 'CUERPO_IMP',
-					valor: $1
-					};	}
-	|CONTENIDOHTML {
-					contHtml+= $1
-					  $$ = { 
-					tipo: 'CUERPO_IMP',
-					valor: $1
-					};
-					
-						}
+	:expresion 
+	|CONTENIDOHTML 
 	
 ;
 casos
-	:casos casoevaluar {  $$ = { 
-					tipo: 'CASOS',
-					valor: [$1, $2]
-					};	}
-	|casoevaluar {  $$ = { 
-					tipo: 'CASOS',
-					valor: $1
-					};	}
+	:casos casoevaluar 
+	|casoevaluar
 ;
 
 casoevaluar
-	:RCASE expresion DOSPUNTOS adentros RBREAK PTCOMA{  $$ = { 
-					tipo: 'CASO_EVALUAR',
-					valor: [$1, $2, $3, $4, $5, $6]
-					};	}
-	| RDEFAULT DOSPUNTOS adentros  {  $$ = { 
-					tipo: 'CASO_EVALUAR',
-					valor: [$1, $2, $3]
-					};	}
+	:RCASE expresion DOSPUNTOS adentros RBREAK PTCOMA
+	| RDEFAULT DOSPUNTOS adentros  
 ;
 
 variablefor
-	: tipodato expresion {  $$ = { 
-					tipo: 'VARIABLE_FOR',
-					valor: [$1, $2]
-					};	}
-	|expresion {  $$ = { 
-					tipo: 'VARIABLE_FOR',
-					valor: $1
-					};	}
+	: tipodato expresion 
+	|expresion 
 ;
 
 subirfor
-	: MAS MAS {  $$ = { 
-					tipo: 'SUBIR_FOR',
-					valor: [$1, $2]
-					};	}
-	| MENOS MENOS {  $$ = { 
-					tipo: 'SUBIR_FOR',
-					valor: [$1, $2]
-					};	}
+	: MAS MAS 
+	| MENOS MENOS 
 ;
 
 finif
-	: LLAVEDER{  $$ = { 
-					tipo: 'FIN_IF',
-					valor: $1
-					};	}
-	| adentros LLAVEDER {  $$ = { 
-					tipo: 'FIN_IF',
-					valor: [$1, $2]
-					};	}
+	: LLAVEDER
+	| adentros LLAVEDER 
 ;
 
 poscontinue
-	: LLAVEDER {  $$ = { 
-					tipo: 'POS_CONTINUE',
-					valor: $1
-					};	}
-	| adentros LLAVEDER {  $$ = { 
-					tipo: 'POS_CONTINUE',
-					valor: [$1, $2]
-					};	}
-	/*| adentros RCONTINUE PTCOMA LLAVEDER{  $$ = { 
-					tipo: 'POS_CONTINUE',
-					valor: [$1, $2, $3, $4]
-					};	}*/
+	: LLAVEDER
+	| adentros LLAVEDER
+
 ;
 
 declaracionvar
-	: tipodato listavariables asingacionuna {  $$ = { 
-					tipo: 'DECLARACION_VAR',
-					valor: [$1, $2, $3]
-					};	}
-	|listavariables asingacionuna {  $$ = { 
-					tipo: 'DECLARACION_VAR',
-					valor: [$1, $2]
-					};	}
+	: tipodato listavariables asingacionuna 
+	|listavariables asingacionuna 
 ;
 
 asingacionuna 
-	: PTCOMA {  $$ = { 
-					tipo: 'ASIGNACION_UNA',
-					valor: $1
-					};	}
-	| IGUAL expresion PTCOMA {  $$ = { 
-					tipo: 'ASINGACION_UNA',
-					valor: [$1, $2, $3]
-					};	}
-	| IGUAL llamarmetodo {  $$ = { 
-					tipo: 'ASINGACION_UNA',
-					valor: [$1, $2]
-					};	}
+	: PTCOMA
+	| IGUAL expresion PTCOMA 
+	| IGUAL llamarmetodo
 ;
 
 listavariables 
-	: listavariables COMA variablesls {  $$ = { 
-					tipo: 'LISTA_VARIABLES',
-					valor: [$1, $2, $3]
-					};	}
-	| variablesls {  $$ = { 
-					tipo: 'LISTA_VARIABLES',
-					valor: $1
-					};	}
+	: listavariables COMA variablesls 
+	| variablesls
 ;
 
 variablesls 
-	: expresion{  $$ = { 
-					tipo: 'VARIABLE',
-					valor: $1
-					};	}
+	: expresion
 ;
 
 main
-	: RVOID RMAIN  PARIZQ PARDER LLAVEIZQ adentros LLAVEDER {  $$ = { 
-					tipo: 'MAIN',
-					valor: [ $1, $2, $3, $4, $5, $6, $7 ]
-					};	}
+	: RVOID RMAIN  PARIZQ PARDER LLAVEIZQ adentros LLAVEDER
 ;
 
 tipodato
-	: RSTRING {  $$ = { 
-					tipo: 'TIPO_DATO',
-					valor: $1
-					};	}
-	| RINT {  $$ = { 
-					tipo: 'TIPO_DATO',
-					valor: $1
-					};	}
-	| RDOUBLE {  $$ = { 
-					tipo: 'TIPO_DATO',
-					valor: $1
-					};	}
-	| RCHAR {  $$ = { 
-					tipo: 'TIPO_DATO',
-					valor: $1
-					};	}
+	: RSTRING
+	| RINT 
+	| RDOUBLE 
+	| RCHAR 
 ;
 
 metodo
-	: tipometodo  PARIZQ parametrosdentro  LLAVEIZQ adentros posreturn  {  $$ = { 
-					tipo: 'METODO',
-					valor:[
-						$1, $2, $3, $4, $5, $6
-					]
-					};	}
+	: tipometodo  PARIZQ parametrosdentro  LLAVEIZQ adentros posreturn  
 ;
 
 posreturn
-	: LLAVEDER {  $$ = { 
-					tipo: 'POS_RETURN',
-					valor:	$1
-					
-					};	}
-	| RRETURN PTCOMA LLAVEDER {  $$ = { 
-					tipo: 'POS_RETURN',
-					valor:[
-						$1, $2
-					]
-					};	}
-	| RRETURN expresion PTCOMA LLAVEDER {  $$ = { 
-					tipo: 'POS_RETURN',
-					valor:[
-						$1, $2, $3
-					]
-					};	}
+	: LLAVEDER 
+	| RRETURN PTCOMA LLAVEDER
+	| RRETURN expresion PTCOMA LLAVEDER 
 ;
 
 tipometodo
-	: tipodato expresion {  $$ = { 
-					tipo: 'TIPO_METODO',
-					valor:[
-						$1, $2
-					]
-					};	}
-	| RVOID expresion {  $$ = { 
-					tipo: 'TIPO_METODO',
-					valor:[
-						$1, $2
-					]
-					};	}
+	: tipodato expresion 
+	| RVOID expresion
 ;
 
 parametrosdentro
-	: PARDER {  $$ = { 
-					tipo: 'PARAMETROS_DENTRO',
-					valor:	$1
-					};	}
-	| listaparametros PARDER {  $$ = { 
-					tipo: 'PARAMETROS_DENTRO',
-					valor:[
-						$1, $2
-					]
-					};	}
+	: PARDER 
+	| listaparametros PARDER
 ;
 
 listaparametros
-	: listaparametros COMA parametros {  $$ = { 
-					tipo: 'LISTA_PARAMETROS',
-					valor:[
-						$1, $2 , $3
-					]
-					};	}
-	| parametros{  $$ = { 
-					tipo: 'LISTA_PARAMETROS',
-					valor: $1
-					
-					};	}
+	: listaparametros COMA parametros
+	| parametros
 ;
 
 parametros
-	: tipodato expresion  {  $$ = { 
-					tipo: 'PARAMETROS',
-					valor:[
-						$1, $2
-					]
-					};	}
+	: tipodato expresion 
 ;
 
 expresionlogica
-	:expresionrelacional ANDY expresionrelacional{  $$ = { 
-					tipo: 'EXP_LOGICA',
-					valor:[
-						$1, $2, $3
-					]
-					};	}
-	|expresionrelacional ORO expresionrelacional {  $$ = { 
-					tipo: 'EXP_LOGICA',
-					valor:[
-						$1, $2, $3
-					]
-					};	}
-	|ADMIRACION expresionrelacional {  $$ = { 
-					tipo: 'EXP_LOGICA',
-					valor:[
-						$1, $2
-					]
-					};	}
-	|expresionrelacional {  $$ = { 
-					tipo: 'EXP_REL',
-					valor:$1
-					};	}
+	:expresionrelacional ANDY expresionrelacional
+	|expresionrelacional ORO expresionrelacional 
+	|ADMIRACION expresionrelacional 
+	|expresionrelacional 
 ;
 
 expresionrelacional
-	:expresion  MAYOR expresion {  $$ = { 
-					tipo: 'EXP_REL',
-					valor:[
-						$1, $2, $3
-					]
-					};	}
-	|expresion MENOR expresion {  $$ = { 
-					tipo: 'EXP_REL',
-					valor:[
-						$1, $2, $3
-					]
-					};	}
-	|expresion MAYORIGUAL expresion {  $$ = { 
-					tipo: 'EXP_REL',
-					valor:[
-						$1, $2, $3
-					]
-					};	}
-	|expresion MENORIGUAL expresion {  $$ = { 
-					tipo: 'EXP_REL',
-					valor:[
-						$1, $2, $3
-					]
-					};	}
-	|expresion IGUALES expresion {  $$ = { 
-					tipo: 'EXP_REL',
-					valor:[
-						$1, $2, $3
-					]
-					};	}
-	|expresion DISTINTO expresion {  $$ = { 
-					tipo: 'EXP_REL',
-					valor:[
-						$1, $2, $3
-					]
-					};	}
+	:expresion  MAYOR expresion 
+	|expresion MENOR expresion 
+	|expresion MAYORIGUAL expresion 
+	|expresion MENORIGUAL expresion
+	|expresion IGUALES expresion 
+	|expresion DISTINTO expresion 
 	|expresion
 ;
 expresion
@@ -559,66 +298,16 @@ expresion
 						$1, $2 , $3
 					]
 					};	}    //	{ $$ = $2 *-1; }
-	|*/: expresion MAS expresion	{  $$ = { 
-					tipo: 'EXPRESION',
-					valor:[
-						$1, $2, $3
-					]
-					};	}	
-	| expresion MENOS expresion	{  $$ = { 
-					tipo: 'EXPRESION',
-					valor:[
-						$1, $2, $3
-					]
-					};	}	
-	| expresion POR expresion	{  $$ = { 
-					tipo: 'EXPRESION',
-					valor:[
-						$1, $2, $3
-					]
-					};	}	
-	| expresion DIVIDIDO expresion	{  $$ = { 
-					tipo: 'EXPRESION',
-					valor:[
-						$1, $2, $3
-					]
-					};	}
-	| ENTERO			{  $$ = { 
-					tipo: 'ENTERO',
-					valor: $1
-					};	}			
-	| DECIMAL			{  $$ = { 
-					tipo: 'DECIMAL',
-					valor: $1
-					};	}			
-	| PARIZQ expresion PARDER	{  $$ = { 
-					tipo: 'AGRUPACION',
-					valor:[
-						$1, $2, $3
-					]
-					};	}	
-	|CADENA {  $$ = { 
-					tipo: 'CADENA',
-					valor: $1
-					};	}
-	|IDENTIFICADOR {  $$ = { 
-					tipo: 'IDENTIFICADOR',
-					valor: $1
-					};	}
-	|RTRUE {  $$ = { 
-					tipo: 'BOOL',
-					valor: $1
-					};	}
-	|RFALSE {  $$ = { 
-					tipo: 'BOOL',
-					valor: $1
-					};	}
-	|CONTENIDOHTML {
-					contHtml+= $1
-					  $$ = { 
-					tipo: 'EXPRESION',
-					valor: $1
-					};
-					
-						}
+	|*/: expresion MAS expresion	
+	| expresion MENOS expresion
+	| expresion POR expresion		
+	| expresion DIVIDIDO expresion
+	| ENTERO					
+	| DECIMAL				
+	| PARIZQ expresion PARDER
+	|CADENA 
+	|IDENTIFICADOR 
+	|RTRUE
+	|RFALSE 
+	|CONTENIDOHTML 
 ;

@@ -1,1 +1,1 @@
-<h2>Llenar los campos</h2><label>Ingrese su nombre:</label><br><input><br></table>
+<h2>Llenar los campos</h2><label>Ingrese su nombre:</label><br><input><br>

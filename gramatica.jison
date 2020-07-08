@@ -97,7 +97,8 @@
 %{
 var fs = require('fs');
 var contHtml = "";	
-var errorLexico = "<table> <tr> <th>Tipo error</th> <th>Linea </th> <th>Columna </th> <th>Descripcion </th> </tr> ";
+var errorLexico = " <!DOCTYPE html>  <html> <head>  <meta charset=\"utf-8\" /> <title>Reporte Errores</title> <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css\" ";
+errorLexico+=    " </head> <body> <div class=\"container\"> <h1>Reporte de Errores</h1>  <br> <table class=\"table table-bordered\"> <tr> <th>Tipo error</th> <th>Linea </th> <th>Columna </th> <th>Descripcion </th> </tr> ";
 %}
 
 /* Asociación de operadores y precedencia */
@@ -113,9 +114,13 @@ var errorLexico = "<table> <tr> <th>Tipo error</th> <th>Linea </th> <th>Columna 
 ini
 	: instrucciones EOF { 
 		console.log('Termino analisis ');
-		contHtml += "</table>";
+		contHtml += "";
 		//console.log(contHtml);
 		fs.writeFileSync('./tableHtml.txt', contHtml);
+		errorLexico += "</table> </body> </html>";
+		console.log(errorLexico)
+		fs.writeFileSync('./errores.txt', errorLexico);
+		fs.writeFileSync('./errores.html', errorLexico);
 		
 		return $1;
 		}
