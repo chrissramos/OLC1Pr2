@@ -1,0 +1,1 @@
+<HTML><head><title>Mi Pagina</title></head><body style = "background:yellow"><h1>[OLC1]Practica 1</h1><div style="background: white"><h2>Encabezado h2</h2><p>Este es un bloque<br>de texto, para una<br></p><br></div><div style="background: skyblue"><h2>Llenar los campos</h2><label>Ingrese su nombre:</label><br><input><br><button>Mi boton</button></div></body></HTML>

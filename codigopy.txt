@@ -1,14 +1,56 @@
-while a <10:print(el valor de a es: +a)
-if  not variable:
-print(adios)
-def switch(variable): case:precio = 55
+void def void():
+print(-!-!-!-!-!-!' ' MENU ' '!-!-!-!-!-!- \n)
+print(\tOpcion 1 \n)
+print(\tOpcion 2 \n)
+print(\tOpcion 3 \n)
+print(\tOpcion 4 \n)
+print(<p>)
+varreader = entrada
+print(Este es un bloque<br>)
+def switch(reader): case:Consoleprint(</p>)
+print(Ingrese valor valido)
 
-case:precio = 25
+case:print(<br>)
+Opcion1()
+if num1!=0:
+}
 
-case:precio = 40
-
-default
-
+elif Hola and GG:
+print(<div style="background: skyblue">)
+while true:print(<h2>Llenar los campos</h2>)
+for iin range (12-1,): 
+print(<label>Ingrese su nombre:</label>)
+if i==2:
+print(<br>)
 break 
 
+
+print(<input>)
+
+break 
+print(<br>)
+
+
+
+
+elif Prueba:
+print(<button>Mi boton</button>)
+while}
+
+while(true): 
+
+
+else: 
+}
+
+
+case:print(</HTML>)
+Opcion2(num1, num2)
+
+case:def switch(num1+num2*num3): case:print(Opcion 3 y la operacion es 1)
+
+default
+default
+def main (): 
+ FFFF()
 

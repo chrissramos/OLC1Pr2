@@ -1,279 +1,74 @@
 {
   "tipo": "instrucciones",
-  "valor": {
-    "tipo": "instruccion",
-    "valor": {
-      "tipo": "ADENTRO",
+  "valor": [
+    {
+      "tipo": "instrucciones",
       "valor": [
-        "while",
-        "(",
+        "void",
         {
-          "tipo": "EXP_REL",
+          "tipo": "instruccion",
           "valor": {
-            "tipo": "EXP_REL",
+            "tipo": "METODO",
             "valor": [
               {
-                "tipo": "IDENTIFICADOR",
-                "valor": "a"
+                "tipo": "TIPO_METODO",
+                "valor": [
+                  "void",
+                  {
+                    "tipo": "IDENTIFICADOR",
+                    "valor": "menu"
+                  }
+                ]
               },
-              "<",
+              "(",
               {
-                "tipo": "DECIMAL",
-                "valor": "10"
-              }
-            ]
-          }
-        },
-        ")",
-        "{",
-        {
-          "tipo": "POS_CONTINUE",
-          "valor": [
-            {
-              "tipo": "ADENTROS",
-              "valor": [
-                {
-                  "tipo": "ADENTROS",
-                  "valor": [
-                    {
-                      "tipo": "ADENTROS",
-                      "valor": {
-                        "tipo": "ADENTRO",
+                "tipo": "PARAMETROS_DENTRO",
+                "valor": ")"
+              },
+              "{",
+              {
+                "tipo": "ADENTROS",
+                "valor": [
+                  {
+                    "tipo": "ADENTROS",
+                    "valor": [
+                      {
+                        "tipo": "ADENTROS",
                         "valor": [
-                          "Console",
-                          ".",
-                          "Write",
-                          "(",
                           {
-                            "tipo": "EXPRESION",
+                            "tipo": "ADENTROS",
                             "valor": [
                               {
-                                "tipo": "CADENA",
-                                "valor": "el valor de a es: "
-                              },
-                              "+",
-                              {
-                                "tipo": "IDENTIFICADOR",
-                                "valor": "a"
-                              }
-                            ]
-                          },
-                          ")",
-                          ";"
-                        ]
-                      }
-                    },
-                    {
-                      "tipo": "ADENTRO",
-                      "valor": [
-                        "if",
-                        "(",
-                        {
-                          "tipo": "EXP_LOGICA",
-                          "valor": [
-                            "!",
-                            {
-                              "tipo": "IDENTIFICADOR",
-                              "valor": "variable"
-                            }
-                          ]
-                        },
-                        ")",
-                        "{",
-                        {
-                          "tipo": "FIN_IF",
-                          "valor": [
-                            {
-                              "tipo": "ADENTROS",
-                              "valor": [
-                                {
-                                  "tipo": "ADENTROS",
-                                  "valor": {
-                                    "tipo": "ADENTRO",
+                                "tipo": "ADENTROS",
+                                "valor": [
+                                  {
+                                    "tipo": "ADENTROS",
                                     "valor": [
-                                      "console",
-                                      ".",
-                                      "Write",
-                                      "(",
                                       {
-                                        "tipo": "CADENA",
-                                        "valor": "adios"
-                                      },
-                                      ")",
-                                      ";"
-                                    ]
-                                  }
-                                },
-                                {
-                                  "tipo": "ADENTRO",
-                                  "valor": [
-                                    "switch",
-                                    "(",
-                                    {
-                                      "tipo": "IDENTIFICADOR",
-                                      "valor": "variable"
-                                    },
-                                    ")",
-                                    "{",
-                                    {
-                                      "tipo": "CASOS",
-                                      "valor": [
-                                        {
-                                          "tipo": "CASOS",
-                                          "valor": [
-                                            {
-                                              "tipo": "CASOS",
-                                              "valor": [
-                                                {
-                                                  "tipo": "CASOS",
-                                                  "valor": {
-                                                    "tipo": "CASO_EVALUAR",
-                                                    "valor": [
-                                                      "case",
-                                                      {
-                                                        "tipo": "DECIMAL",
-                                                        "valor": "1"
-                                                      },
-                                                      ":",
-                                                      {
-                                                        "tipo": "ADENTROS",
-                                                        "valor": {
-                                                          "tipo": "ADENTRO",
-                                                          "valor": {
-                                                            "tipo": "DECLARACION_VAR",
-                                                            "valor": [
-                                                              {
-                                                                "tipo": "LISTA_VARIABLES",
-                                                                "valor": {
-                                                                  "tipo": "VARIABLE",
-                                                                  "valor": {
-                                                                    "tipo": "IDENTIFICADOR",
-                                                                    "valor": "precio"
-                                                                  }
-                                                                }
-                                                              },
-                                                              {
-                                                                "tipo": "ASINGACION_UNA",
-                                                                "valor": [
-                                                                  "=",
-                                                                  {
-                                                                    "tipo": "DECIMAL",
-                                                                    "valor": "55"
-                                                                  },
-                                                                  ";"
-                                                                ]
-                                                              }
-                                                            ]
-                                                          }
-                                                        }
-                                                      },
-                                                      "break",
-                                                      ";"
-                                                    ]
-                                                  }
-                                                },
-                                                {
-                                                  "tipo": "CASO_EVALUAR",
+                                        "tipo": "ADENTROS",
+                                        "valor": [
+                                          {
+                                            "tipo": "ADENTROS",
+                                            "valor": [
+                                              {
+                                                "tipo": "ADENTROS",
+                                                "valor": {
+                                                  "tipo": "ADENTRO",
                                                   "valor": [
-                                                    "case",
+                                                    "Console",
+                                                    ".",
+                                                    "Write",
+                                                    "(",
                                                     {
-                                                      "tipo": "DECIMAL",
-                                                      "valor": "2"
+                                                      "tipo": "CADENA",
+                                                      "valor": "-!-!-!-!-!-!' ' MENU ' '!-!-!-!-!-!- \\n"
                                                     },
-                                                    ":",
-                                                    {
-                                                      "tipo": "ADENTROS",
-                                                      "valor": {
-                                                        "tipo": "ADENTRO",
-                                                        "valor": {
-                                                          "tipo": "DECLARACION_VAR",
-                                                          "valor": [
-                                                            {
-                                                              "tipo": "LISTA_VARIABLES",
-                                                              "valor": {
-                                                                "tipo": "VARIABLE",
-                                                                "valor": {
-                                                                  "tipo": "IDENTIFICADOR",
-                                                                  "valor": "precio"
-                                                                }
-                                                              }
-                                                            },
-                                                            {
-                                                              "tipo": "ASINGACION_UNA",
-                                                              "valor": [
-                                                                "=",
-                                                                {
-                                                                  "tipo": "DECIMAL",
-                                                                  "valor": "25"
-                                                                },
-                                                                ";"
-                                                              ]
-                                                            }
-                                                          ]
-                                                        }
-                                                      }
-                                                    },
-                                                    "break",
+                                                    ")",
                                                     ";"
                                                   ]
                                                 }
-                                              ]
-                                            },
-                                            {
-                                              "tipo": "CASO_EVALUAR",
-                                              "valor": [
-                                                "case",
-                                                {
-                                                  "tipo": "DECIMAL",
-                                                  "valor": "3"
-                                                },
-                                                ":",
-                                                {
-                                                  "tipo": "ADENTROS",
-                                                  "valor": {
-                                                    "tipo": "ADENTRO",
-                                                    "valor": {
-                                                      "tipo": "DECLARACION_VAR",
-                                                      "valor": [
-                                                        {
-                                                          "tipo": "LISTA_VARIABLES",
-                                                          "valor": {
-                                                            "tipo": "VARIABLE",
-                                                            "valor": {
-                                                              "tipo": "IDENTIFICADOR",
-                                                              "valor": "precio"
-                                                            }
-                                                          }
-                                                        },
-                                                        {
-                                                          "tipo": "ASINGACION_UNA",
-                                                          "valor": [
-                                                            "=",
-                                                            {
-                                                              "tipo": "DECIMAL",
-                                                              "valor": "40"
-                                                            },
-                                                            ";"
-                                                          ]
-                                                        }
-                                                      ]
-                                                    }
-                                                  }
-                                                },
-                                                "break",
-                                                ";"
-                                              ]
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "tipo": "CASO_EVALUAR",
-                                          "valor": [
-                                            "default",
-                                            ":",
-                                            {
-                                              "tipo": "ADENTROS",
-                                              "valor": {
+                                              },
+                                              {
                                                 "tipo": "ADENTRO",
                                                 "valor": [
                                                   "Console",
@@ -282,42 +77,1023 @@
                                                   "(",
                                                   {
                                                     "tipo": "CADENA",
-                                                    "valor": "No válido. Escoja 1, 2, o 3."
+                                                    "valor": "\\tOpcion 1 \\n"
                                                   },
                                                   ")",
                                                   ";"
                                                 ]
                                               }
-                                            }
-                                          ]
-                                        }
-                                      ]
+                                            ]
+                                          },
+                                          {
+                                            "tipo": "ADENTRO",
+                                            "valor": [
+                                              "Console",
+                                              ".",
+                                              "Write",
+                                              "(",
+                                              {
+                                                "tipo": "CADENA",
+                                                "valor": "\\tOpcion 2 \\n"
+                                              },
+                                              ")",
+                                              ";"
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "tipo": "ADENTRO",
+                                        "valor": [
+                                          "Console",
+                                          ".",
+                                          "Write",
+                                          "(",
+                                          {
+                                            "tipo": "CADENA",
+                                            "valor": "\\tOpcion 3 \\n"
+                                          },
+                                          ")",
+                                          ";"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "tipo": "ADENTRO",
+                                    "valor": [
+                                      "Console",
+                                      ".",
+                                      "Write",
+                                      "(",
+                                      {
+                                        "tipo": "CADENA",
+                                        "valor": "\\tOpcion 4 \\n"
+                                      },
+                                      ")",
+                                      ";"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tipo": "ADENTRO",
+                                "valor": [
+                                  "Console",
+                                  ".",
+                                  "Write",
+                                  "(",
+                                  {
+                                    "tipo": "EXPRESION",
+                                    "valor": "<p>"
+                                  },
+                                  ")",
+                                  ";"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tipo": "ADENTRO",
+                            "valor": {
+                              "tipo": "DECLARACION_VAR",
+                              "valor": [
+                                {
+                                  "tipo": "TIPO_DATO",
+                                  "valor": "String"
+                                },
+                                {
+                                  "tipo": "LISTA_VARIABLES",
+                                  "valor": {
+                                    "tipo": "VARIABLE",
+                                    "valor": {
+                                      "tipo": "IDENTIFICADOR",
+                                      "valor": "reader"
+                                    }
+                                  }
+                                },
+                                {
+                                  "tipo": "ASINGACION_UNA",
+                                  "valor": [
+                                    "=",
+                                    {
+                                      "tipo": "IDENTIFICADOR",
+                                      "valor": "entrada"
                                     },
-                                    "}"
+                                    ";"
                                   ]
                                 }
                               ]
-                            },
-                            "}"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "tipo": "ADENTRO",
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "tipo": "ADENTRO",
+                        "valor": [
+                          "Console",
+                          ".",
+                          "Write",
+                          "(",
+                          {
+                            "tipo": "EXPRESION",
+                            "valor": "Este es un bloque<br>"
+                          },
+                          ")",
+                          ";"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tipo": "ADENTRO",
+                    "valor": [
+                      "switch",
+                      "(",
+                      {
+                        "tipo": "IDENTIFICADOR",
+                        "valor": "reader"
+                      },
+                      ")",
+                      "{",
+                      {
+                        "tipo": "CASOS",
+                        "valor": [
+                          {
+                            "tipo": "CASOS",
+                            "valor": [
+                              {
+                                "tipo": "CASOS",
+                                "valor": [
+                                  {
+                                    "tipo": "CASOS",
+                                    "valor": [
+                                      {
+                                        "tipo": "CASOS",
+                                        "valor": {
+                                          "tipo": "CASO_EVALUAR",
+                                          "valor": [
+                                            "case",
+                                            {
+                                              "tipo": "EXPRESION",
+                                              "valor": [
+                                                {
+                                                  "tipo": "CADENA",
+                                                  "valor": "No quiero entrar"
+                                                },
+                                                "+",
+                                                {
+                                                  "tipo": "IDENTIFICADOR",
+                                                  "valor": "num1"
+                                                }
+                                              ]
+                                            },
+                                            ":",
+                                            {
+                                              "tipo": "ADENTROS",
+                                              "valor": [
+                                                {
+                                                  "tipo": "ADENTROS",
+                                                  "valor": [
+                                                    "Console",
+                                                    {
+                                                      "tipo": "ADENTRO",
+                                                      "valor": [
+                                                        "Console",
+                                                        ".",
+                                                        "Write",
+                                                        "(",
+                                                        {
+                                                          "tipo": "EXPRESION",
+                                                          "valor": "</p>"
+                                                        },
+                                                        ")",
+                                                        ";"
+                                                      ]
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "tipo": "ADENTRO",
+                                                  "valor": [
+                                                    "Console",
+                                                    ".",
+                                                    "Write",
+                                                    "(",
+                                                    {
+                                                      "tipo": "CADENA",
+                                                      "valor": "Ingrese valor valido"
+                                                    },
+                                                    ")",
+                                                    ";"
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            "break",
+                                            ";"
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "tipo": "CASO_EVALUAR",
+                                        "valor": [
+                                          "case",
+                                          {
+                                            "tipo": "DECIMAL",
+                                            "valor": "1"
+                                          },
+                                          ":",
+                                          {
+                                            "tipo": "ADENTROS",
+                                            "valor": [
+                                              {
+                                                "tipo": "ADENTROS",
+                                                "valor": [
+                                                  {
+                                                    "tipo": "ADENTROS",
+                                                    "valor": [
+                                                      {
+                                                        "tipo": "ADENTROS",
+                                                        "valor": [
+                                                          {
+                                                            "tipo": "ADENTROS",
+                                                            "valor": [
+                                                              {
+                                                                "tipo": "ADENTROS",
+                                                                "valor": {
+                                                                  "tipo": "ADENTRO",
+                                                                  "valor": [
+                                                                    "Console",
+                                                                    ".",
+                                                                    "Write",
+                                                                    "(",
+                                                                    {
+                                                                      "tipo": "EXPRESION",
+                                                                      "valor": "<br>"
+                                                                    },
+                                                                    ")",
+                                                                    ";"
+                                                                  ]
+                                                                }
+                                                              },
+                                                              {
+                                                                "tipo": "ADENTRO",
+                                                                "valor": {
+                                                                  "tipo": "LLAMARMETODO",
+                                                                  "valor": [
+                                                                    "Opcion1",
+                                                                    "(",
+                                                                    ")",
+                                                                    ";"
+                                                                  ]
+                                                                }
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "tipo": "ADENTRO",
+                                                            "valor": [
+                                                              "if",
+                                                              "(",
+                                                              {
+                                                                "tipo": "EXP_REL",
+                                                                "valor": {
+                                                                  "tipo": "EXP_REL",
+                                                                  "valor": [
+                                                                    {
+                                                                      "tipo": "IDENTIFICADOR",
+                                                                      "valor": "num1"
+                                                                    },
+                                                                    "!=",
+                                                                    {
+                                                                      "tipo": "DECIMAL",
+                                                                      "valor": "0"
+                                                                    }
+                                                                  ]
+                                                                }
+                                                              },
+                                                              ")",
+                                                              "{",
+                                                              {
+                                                                "tipo": "FIN_IF",
+                                                                "valor": [
+                                                                  "}",
+                                                                  "}"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "tipo": "ADENTRO",
+                                                        "valor": [
+                                                          "else",
+                                                          "if",
+                                                          "(",
+                                                          {
+                                                            "tipo": "EXP_LOGICA",
+                                                            "valor": [
+                                                              {
+                                                                "tipo": "CADENA",
+                                                                "valor": "Hola"
+                                                              },
+                                                              "&&",
+                                                              {
+                                                                "tipo": "IDENTIFICADOR",
+                                                                "valor": "GG"
+                                                              }
+                                                            ]
+                                                          },
+                                                          ")",
+                                                          "{",
+                                                          {
+                                                            "tipo": "FIN_IF",
+                                                            "valor": [
+                                                              {
+                                                                "tipo": "ADENTROS",
+                                                                "valor": [
+                                                                  {
+                                                                    "tipo": "ADENTROS",
+                                                                    "valor": {
+                                                                      "tipo": "ADENTRO",
+                                                                      "valor": [
+                                                                        "Console",
+                                                                        ".",
+                                                                        "Write",
+                                                                        "(",
+                                                                        {
+                                                                          "tipo": "EXPRESION",
+                                                                          "valor": "<div style=\"background: skyblue\">"
+                                                                        },
+                                                                        ")",
+                                                                        ";"
+                                                                      ]
+                                                                    }
+                                                                  },
+                                                                  {
+                                                                    "tipo": "ADENTRO",
+                                                                    "valor": [
+                                                                      "while",
+                                                                      "(",
+                                                                      {
+                                                                        "tipo": "EXP_REL",
+                                                                        "valor": {
+                                                                          "tipo": "BOOL",
+                                                                          "valor": "true"
+                                                                        }
+                                                                      },
+                                                                      ")",
+                                                                      "{",
+                                                                      {
+                                                                        "tipo": "POS_CONTINUE",
+                                                                        "valor": [
+                                                                          {
+                                                                            "tipo": "ADENTROS",
+                                                                            "valor": [
+                                                                              {
+                                                                                "tipo": "ADENTROS",
+                                                                                "valor": [
+                                                                                  {
+                                                                                    "tipo": "ADENTROS",
+                                                                                    "valor": [
+                                                                                      {
+                                                                                        "tipo": "ADENTROS",
+                                                                                        "valor": {
+                                                                                          "tipo": "ADENTRO",
+                                                                                          "valor": [
+                                                                                            "Console",
+                                                                                            ".",
+                                                                                            "Write",
+                                                                                            "(",
+                                                                                            {
+                                                                                              "tipo": "EXPRESION",
+                                                                                              "valor": "<h2>Llenar los campos</h2>"
+                                                                                            },
+                                                                                            ")",
+                                                                                            ";"
+                                                                                          ]
+                                                                                        }
+                                                                                      },
+                                                                                      {
+                                                                                        "tipo": "ADENTRO",
+                                                                                        "valor": [
+                                                                                          "for",
+                                                                                          "(",
+                                                                                          {
+                                                                                            "tipo": "VARIABLE_FOR",
+                                                                                            "valor": [
+                                                                                              {
+                                                                                                "tipo": "TIPO_DATO",
+                                                                                                "valor": "int"
+                                                                                              },
+                                                                                              {
+                                                                                                "tipo": "IDENTIFICADOR",
+                                                                                                "valor": "i"
+                                                                                              }
+                                                                                            ]
+                                                                                          },
+                                                                                          "=",
+                                                                                          {
+                                                                                            "tipo": "EXPRESION",
+                                                                                            "valor": [
+                                                                                              {
+                                                                                                "tipo": "DECIMAL",
+                                                                                                "valor": "12"
+                                                                                              },
+                                                                                              "-",
+                                                                                              {
+                                                                                                "tipo": "DECIMAL",
+                                                                                                "valor": "1"
+                                                                                              }
+                                                                                            ]
+                                                                                          },
+                                                                                          ";",
+                                                                                          {
+                                                                                            "tipo": "EXP_REL",
+                                                                                            "valor": {
+                                                                                              "tipo": "EXP_REL",
+                                                                                              "valor": [
+                                                                                                {
+                                                                                                  "tipo": "IDENTIFICADOR",
+                                                                                                  "valor": "i"
+                                                                                                },
+                                                                                                "<",
+                                                                                                {
+                                                                                                  "tipo": "IDENTIFICADOR",
+                                                                                                  "valor": "num5"
+                                                                                                }
+                                                                                              ]
+                                                                                            }
+                                                                                          },
+                                                                                          ";",
+                                                                                          {
+                                                                                            "tipo": "IDENTIFICADOR",
+                                                                                            "valor": "i"
+                                                                                          },
+                                                                                          {
+                                                                                            "tipo": "SUBIR_FOR",
+                                                                                            "valor": [
+                                                                                              "+",
+                                                                                              "+"
+                                                                                            ]
+                                                                                          },
+                                                                                          ")",
+                                                                                          "{",
+                                                                                          {
+                                                                                            "tipo": "POS_CONTINUE",
+                                                                                            "valor": [
+                                                                                              {
+                                                                                                "tipo": "ADENTROS",
+                                                                                                "valor": [
+                                                                                                  {
+                                                                                                    "tipo": "ADENTROS",
+                                                                                                    "valor": [
+                                                                                                      {
+                                                                                                        "tipo": "ADENTROS",
+                                                                                                        "valor": {
+                                                                                                          "tipo": "ADENTRO",
+                                                                                                          "valor": [
+                                                                                                            "Console",
+                                                                                                            ".",
+                                                                                                            "Write",
+                                                                                                            "(",
+                                                                                                            {
+                                                                                                              "tipo": "EXPRESION",
+                                                                                                              "valor": "<label>Ingrese su nombre:</label>"
+                                                                                                            },
+                                                                                                            ")",
+                                                                                                            ";"
+                                                                                                          ]
+                                                                                                        }
+                                                                                                      },
+                                                                                                      {
+                                                                                                        "tipo": "ADENTRO",
+                                                                                                        "valor": [
+                                                                                                          "if",
+                                                                                                          "(",
+                                                                                                          {
+                                                                                                            "tipo": "EXP_REL",
+                                                                                                            "valor": {
+                                                                                                              "tipo": "EXP_REL",
+                                                                                                              "valor": [
+                                                                                                                {
+                                                                                                                  "tipo": "IDENTIFICADOR",
+                                                                                                                  "valor": "i"
+                                                                                                                },
+                                                                                                                "==",
+                                                                                                                {
+                                                                                                                  "tipo": "DECIMAL",
+                                                                                                                  "valor": "2"
+                                                                                                                }
+                                                                                                              ]
+                                                                                                            }
+                                                                                                          },
+                                                                                                          ")",
+                                                                                                          "{",
+                                                                                                          {
+                                                                                                            "tipo": "FIN_IF",
+                                                                                                            "valor": [
+                                                                                                              {
+                                                                                                                "tipo": "ADENTROS",
+                                                                                                                "valor": [
+                                                                                                                  {
+                                                                                                                    "tipo": "ADENTROS",
+                                                                                                                    "valor": {
+                                                                                                                      "tipo": "ADENTRO",
+                                                                                                                      "valor": [
+                                                                                                                        "Console",
+                                                                                                                        ".",
+                                                                                                                        "Write",
+                                                                                                                        "(",
+                                                                                                                        {
+                                                                                                                          "tipo": "EXPRESION",
+                                                                                                                          "valor": "<br>"
+                                                                                                                        },
+                                                                                                                        ")",
+                                                                                                                        ";"
+                                                                                                                      ]
+                                                                                                                    }
+                                                                                                                  },
+                                                                                                                  {
+                                                                                                                    "tipo": "ADENTRO",
+                                                                                                                    "valor": [
+                                                                                                                      "break",
+                                                                                                                      ";"
+                                                                                                                    ]
+                                                                                                                  }
+                                                                                                                ]
+                                                                                                              },
+                                                                                                              "}"
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        ]
+                                                                                                      }
+                                                                                                    ]
+                                                                                                  },
+                                                                                                  {
+                                                                                                    "tipo": "ADENTRO",
+                                                                                                    "valor": [
+                                                                                                      "Console",
+                                                                                                      ".",
+                                                                                                      "Write",
+                                                                                                      "(",
+                                                                                                      {
+                                                                                                        "tipo": "EXPRESION",
+                                                                                                        "valor": "<input>"
+                                                                                                      },
+                                                                                                      ")",
+                                                                                                      ";"
+                                                                                                    ]
+                                                                                                  }
+                                                                                                ]
+                                                                                              },
+                                                                                              "}"
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  },
+                                                                                  {
+                                                                                    "tipo": "ADENTRO",
+                                                                                    "valor": [
+                                                                                      "break",
+                                                                                      ";"
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              },
+                                                                              {
+                                                                                "tipo": "ADENTRO",
+                                                                                "valor": [
+                                                                                  "Console",
+                                                                                  ".",
+                                                                                  "Write",
+                                                                                  "(",
+                                                                                  {
+                                                                                    "tipo": "EXPRESION",
+                                                                                    "valor": "<br>"
+                                                                                  },
+                                                                                  ")",
+                                                                                  ";"
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          },
+                                                                          "}"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              },
+                                                              "}"
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "tipo": "ADENTRO",
+                                                    "valor": [
+                                                      "else",
+                                                      "if",
+                                                      "(",
+                                                      {
+                                                        "tipo": "EXP_REL",
+                                                        "valor": {
+                                                          "tipo": "IDENTIFICADOR",
+                                                          "valor": "Prueba"
+                                                        }
+                                                      },
+                                                      ")",
+                                                      "{",
+                                                      {
+                                                        "tipo": "FIN_IF",
+                                                        "valor": [
+                                                          {
+                                                            "tipo": "ADENTROS",
+                                                            "valor": [
+                                                              {
+                                                                "tipo": "ADENTROS",
+                                                                "valor": [
+                                                                  {
+                                                                    "tipo": "ADENTROS",
+                                                                    "valor": {
+                                                                      "tipo": "ADENTRO",
+                                                                      "valor": [
+                                                                        "Console",
+                                                                        ".",
+                                                                        "Write",
+                                                                        "(",
+                                                                        {
+                                                                          "tipo": "EXPRESION",
+                                                                          "valor": "<button>Mi boton</button>"
+                                                                        },
+                                                                        ")",
+                                                                        ";"
+                                                                      ]
+                                                                    }
+                                                                  },
+                                                                  {
+                                                                    "tipo": "ADENTRO",
+                                                                    "valor": [
+                                                                      "do",
+                                                                      "{",
+                                                                      {
+                                                                        "tipo": "POS_CONTINUE",
+                                                                        "valor": [
+                                                                          "}",
+                                                                          "}"
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              },
+                                                              {
+                                                                "tipo": "ADENTRO",
+                                                                "valor": [
+                                                                  "while",
+                                                                  "(",
+                                                                  {
+                                                                    "tipo": "EXP_REL",
+                                                                    "valor": {
+                                                                      "tipo": "BOOL",
+                                                                      "valor": "true"
+                                                                    }
+                                                                  },
+                                                                  ")",
+                                                                  ";"
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          "}"
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "tipo": "ADENTRO",
+                                                "valor": [
+                                                  "else",
+                                                  "{",
+                                                  {
+                                                    "tipo": "FIN_IF",
+                                                    "valor": [
+                                                      "}",
+                                                      "}"
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          "break",
+                                          ";"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "tipo": "CASO_EVALUAR",
+                                    "valor": [
+                                      "case",
+                                      {
+                                        "tipo": "DECIMAL",
+                                        "valor": "2"
+                                      },
+                                      ":",
+                                      {
+                                        "tipo": "ADENTROS",
+                                        "valor": [
+                                          {
+                                            "tipo": "ADENTROS",
+                                            "valor": {
+                                              "tipo": "ADENTRO",
+                                              "valor": [
+                                                "Console",
+                                                ".",
+                                                "Write",
+                                                "(",
+                                                {
+                                                  "tipo": "EXPRESION",
+                                                  "valor": "</HTML>"
+                                                },
+                                                ")",
+                                                ";"
+                                              ]
+                                            }
+                                          },
+                                          {
+                                            "tipo": "ADENTRO",
+                                            "valor": {
+                                              "tipo": "LLAMARMETODO",
+                                              "valor": [
+                                                "Opcion2",
+                                                "(",
+                                                {
+                                                  "tipo": "LISTAPAR",
+                                                  "valor": [
+                                                    {
+                                                      "tipo": "LISTAPAR",
+                                                      "valor": {
+                                                        "tipo": "PAR",
+                                                        "valor": "num1"
+                                                      }
+                                                    },
+                                                    ",",
+                                                    {
+                                                      "tipo": "PAR",
+                                                      "valor": "num2"
+                                                    }
+                                                  ]
+                                                },
+                                                ")",
+                                                ";"
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "break",
+                                      ";"
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "tipo": "CASO_EVALUAR",
+                                "valor": [
+                                  "case",
+                                  {
+                                    "tipo": "DECIMAL",
+                                    "valor": "3"
+                                  },
+                                  ":",
+                                  {
+                                    "tipo": "ADENTROS",
+                                    "valor": {
+                                      "tipo": "ADENTRO",
+                                      "valor": [
+                                        "switch",
+                                        "(",
+                                        {
+                                          "tipo": "EXPRESION",
+                                          "valor": [
+                                            {
+                                              "tipo": "IDENTIFICADOR",
+                                              "valor": "num1"
+                                            },
+                                            "+",
+                                            {
+                                              "tipo": "EXPRESION",
+                                              "valor": [
+                                                {
+                                                  "tipo": "IDENTIFICADOR",
+                                                  "valor": "num2"
+                                                },
+                                                "*",
+                                                {
+                                                  "tipo": "IDENTIFICADOR",
+                                                  "valor": "num3"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        ")",
+                                        "{",
+                                        {
+                                          "tipo": "CASOS",
+                                          "valor": [
+                                            {
+                                              "tipo": "CASOS",
+                                              "valor": {
+                                                "tipo": "CASO_EVALUAR",
+                                                "valor": [
+                                                  "case",
+                                                  {
+                                                    "tipo": "DECIMAL",
+                                                    "valor": "1"
+                                                  },
+                                                  ":",
+                                                  {
+                                                    "tipo": "ADENTROS",
+                                                    "valor": {
+                                                      "tipo": "ADENTRO",
+                                                      "valor": [
+                                                        "Console",
+                                                        ".",
+                                                        "Write",
+                                                        "(",
+                                                        {
+                                                          "tipo": "CADENA",
+                                                          "valor": "Opcion 3 y la operacion es 1"
+                                                        },
+                                                        ")",
+                                                        ";"
+                                                      ]
+                                                    }
+                                                  },
+                                                  "break",
+                                                  ";"
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "tipo": "CASO_EVALUAR",
+                                              "valor": [
+                                                "default",
+                                                ":",
+                                                {
+                                                  "tipo": "ADENTROS",
+                                                  "valor": [
+                                                    {
+                                                      "tipo": "ADENTROS",
+                                                      "valor": {
+                                                        "tipo": "ADENTRO",
+                                                        "valor": {
+                                                          "tipo": "LLAMARMETODO",
+                                                          "valor": [
+                                                            "Opcion3No1",
+                                                            "(",
+                                                            {
+                                                              "tipo": "LISTAPAR",
+                                                              "valor": [
+                                                                {
+                                                                  "tipo": "LISTAPAR",
+                                                                  "valor": {
+                                                                    "tipo": "PAR",
+                                                                    "valor": "num1"
+                                                                  }
+                                                                },
+                                                                ",",
+                                                                {
+                                                                  "tipo": "PAR",
+                                                                  "valor": "num2"
+                                                                }
+                                                              ]
+                                                            },
+                                                            ")",
+                                                            ";"
+                                                          ]
+                                                        }
+                                                      }
+                                                    },
+                                                    {
+                                                      "tipo": "ADENTRO",
+                                                      "valor": [
+                                                        "break",
+                                                        ";"
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "}"
+                                      ]
+                                    }
+                                  },
+                                  "break",
+                                  ";"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "tipo": "CASO_EVALUAR",
+                            "valor": [
+                              "default",
+                              ":",
+                              {
+                                "tipo": "ADENTROS",
+                                "valor": [
+                                  {
+                                    "tipo": "ADENTROS",
+                                    "valor": {
+                                      "tipo": "ADENTRO",
+                                      "valor": [
+                                        "Console",
+                                        ".",
+                                        "Write",
+                                        "(",
+                                        {
+                                          "tipo": "CADENA",
+                                          "valor": "Default"
+                                        },
+                                        ")",
+                                        ";"
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "tipo": "ADENTRO",
+                                    "valor": [
+                                      "break",
+                                      ";"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "}"
+                    ]
+                  }
+                ]
+              },
+              {
+                "tipo": "POS_RETURN",
+                "valor": "}"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "tipo": "instruccion",
+      "valor": {
+        "tipo": "MAIN",
+        "valor": [
+          "void",
+          "main",
+          "(",
+          ")",
+          "{",
+          {
+            "tipo": "ADENTROS",
+            "valor": [
+              "FF",
+              {
+                "tipo": "ADENTRO",
+                "valor": {
+                  "tipo": "LLAMARMETODO",
                   "valor": [
-                    "break",
+                    "FF",
+                    "(",
+                    ")",
                     ";"
                   ]
                 }
-              ]
-            },
-            "}"
-          ]
-        }
-      ]
+              }
+            ]
+          },
+          "}"
+        ]
+      }
     }
-  }
+  ]
 }
