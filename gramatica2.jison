@@ -112,10 +112,10 @@ var errorLexico = "<table> <tr> <th>Tipo error</th> <th>Linea </th> <th>Columna 
 
 ini
 	: instrucciones EOF { 
-		console.log('Termino analisis ');
+		console.log('Termino analisis 2 ');
 		contHtml += "</table>";
 		//console.log(contHtml);
-		fs.writeFileSync('./tableHtml.txt', contHtml);
+		//fs.writeFileSync('./tableHtml.txt', contHtml);
 		
 		return $1;
 		}

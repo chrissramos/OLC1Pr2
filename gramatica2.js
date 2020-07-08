@@ -71,7 +71,7 @@
     recoverable: (boolean: TRUE when the parser has a error recovery rule available for this particular error)
   }
 */
-var gramatica = (function(){
+var gramatica2 = (function(){
 var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,11],$V1=[1,32],$V2=[1,12],$V3=[1,13],$V4=[1,14],$V5=[1,15],$V6=[1,16],$V7=[1,17],$V8=[1,18],$V9=[1,19],$Va=[1,23],$Vb=[1,36],$Vc=[1,8],$Vd=[1,24],$Ve=[1,25],$Vf=[1,26],$Vg=[1,27],$Vh=[1,30],$Vi=[1,31],$Vj=[1,33],$Vk=[1,34],$Vl=[1,35],$Vm=[5,12,15,19,23,24,29,30,31,34,35,37,42,53,55,56,57,58,77,78,79,80,81],$Vn=[1,41],$Vo=[5,12,15,19,23,24,29,30,31,33,34,35,37,42,44,46,53,55,56,57,58,62,77,78,79,80,81],$Vp=[1,57],$Vq=[1,58],$Vr=[1,56],$Vs=[2,86],$Vt=[15,37,42,77,78,79,80,81],$Vu=[18,26,39],$Vv=[2,50],$Vw=[1,60],$Vx=[1,61],$Vy=[1,62],$Vz=[1,63],$VA=[15,17,18,26,39,45,48,49,66,67,69,70,71,72,73,74,75,76],$VB=[1,74],$VC=[1,80],$VD=[1,77],$VE=[1,88],$VF=[2,22],$VG=[1,98],$VH=[17,39],$VI=[17,18],$VJ=[17,18,66,67],$VK=[12,15,19,23,24,29,30,31,33,34,35,37,42,44,46,55,56,57,58,62,77,78,79,80,81],$VL=[15,17,18,26,39,45,48,49,66,67,69,70,71,72,73,74],$VM=[1,163],$VN=[1,164],$VO=[33,44,46],$VP=[2,33];
 var parser = {trace: function trace () { },
 yy: {},
@@ -85,10 +85,10 @@ var $0 = $$.length - 1;
 switch (yystate) {
 case 1:
  
-		console.log('Termino analisis ');
+		console.log('Termino analisis 2 ');
 		contHtml += "</table>";
 		//console.log(contHtml);
-		fs.writeFileSync('./tableHtml.txt', contHtml);
+		//fs.writeFileSync('./tableHtml.txt', contHtml);
 		
 		return $$[$0-1];
 		
@@ -1220,9 +1220,9 @@ return new Parser;
 
 
 if (typeof require !== 'undefined' && typeof exports !== 'undefined') {
-exports.parser = gramatica;
-exports.Parser = gramatica.Parser;
-exports.parse = function () { return gramatica.parse.apply(gramatica, arguments); };
+exports.parser = gramatica2;
+exports.Parser = gramatica2.Parser;
+exports.parse = function () { return gramatica2.parse.apply(gramatica2, arguments); };
 exports.main = function commonjsMain (args) {
     if (!args[1]) {
         console.log('Usage: '+args[0]+' FILE');

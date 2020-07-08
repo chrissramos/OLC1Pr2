@@ -4,6 +4,8 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 var parser = require('../gramatica');
+var parserDos = require('../gramatica2');
+var html2json = require('html2json').html2json;
 //const parse = require('himalaya');
 
 //const html = fs.readFileSync('./hello.txt', {encoding: 'utf8'});
@@ -47,6 +49,7 @@ var variablePrueba = "Randall ";
 var variableJsonPrincipal = "";
 var variableHtml = "";
 var variableTabla = "";
+var variableHtmlAJson = "";
 
 app.get('/', (req,res)=>{
     console.log('estamos en get');
@@ -55,7 +58,8 @@ app.get('/', (req,res)=>{
         variableJsonPrincipal: variableJsonPrincipal,
         variablePrueba : variablePrueba,
         variableHtml : variableHtml,
-        variableTabla : variableTabla
+        variableTabla : variableTabla,
+        variableHtmlAJson : variableHtmlAJson
     });
 
 });
@@ -63,7 +67,7 @@ app.get('/', (req,res)=>{
 
 
 app.post('/', function(request, response){
-    parser.parse(request.body.txtAreaEntrada.toString());
+    //parser.parse(request.body.txtAreaEntrada.toString());
 
     ast = parser.parse(request.body.txtAreaEntrada.toString());
 
@@ -73,17 +77,12 @@ app.post('/', function(request, response){
     console.log("leyendo html");
     console.log(lectura);
     variableHtml = lectura;
-    //console.log('leyendo html desde el servidor')
-   // var html = fs.readFileSync('./hello.html', {encoding: 'utf8'});
-    //var jsonSalida = himalaya.parse(html);
-    
-    //var jsonStr = JSON.stringify(jsonSalida)
-   // console.log(jsonSalida)
-    
-    //console.log('termino de leer json')
-    // leyendo el html de console.write
-    //console.log(__dirname)
-    
+
+    var jsonHt = html2json(lectura);
+    //console.log('------YA ES JSON-----------')
+    var jsonEnString = JSON.stringify(jsonHt, ' ', ' ')
+    //console.log(JSON.stringify(jsonHt, ' ', ' '));
+    variableHtmlAJson = jsonEnString;
     
 
     var astString = JSON.stringify(ast);
@@ -93,7 +92,8 @@ app.post('/', function(request, response){
     response.render('index.ejs', {
         variableJsonPrincipal: variableJsonPrincipal,
         variablePrueba : variablePrueba,
-        variableHtml : variableHtml
+        variableHtml : variableHtml,
+        variableHtmlAJson : variableHtmlAJson
     });
         
     //response.redirect("./")
