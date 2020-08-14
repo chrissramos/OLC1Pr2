@@ -4,28 +4,29 @@ var textoArea;
 var textFromFileLoaded;
 var textFromJson;
 var archivoo = '../helloworld.txt';
+
 function cargarEntrada() {
     //alert("Encontro funcion");
     var fileToLoad = document.getElementById("subirEntrada").files[0];
     var fileReader = new FileReader();
-    fileReader.onload = function(fileLoadedEvent){
+    fileReader.onload = function(fileLoadedEvent) {
         textFromFileLoaded = fileLoadedEvent.target.result;
         document.getElementById("txtAreaEntrada").value = textFromFileLoaded;
         textoArea = textFromFileLoaded;
     };
 
     fileReader.readAsText(fileToLoad, "UTF-8");
-   // var x = document.getElementById("subirEntrada").content;
+    // var x = document.getElementById("subirEntrada").content;
     //document.getElementById("txtAreaEntrada").value = x;
     //x.disabled = true;
 
-  }
+}
 
-  function verCarpetas(){
+function verCarpetas() {
     alert("vamos a ver carpetas");
     var fileToLoad = document.getElementById("subirCarpetas").files[0];
     var fileReader = new FileReader();
-    fileReader.onload = function(fileLoadedEvent){
+    fileReader.onload = function(fileLoadedEvent) {
         textFromFileLoaded = fileLoadedEvent.target.result;
         //document.getElementById("txtAreaEntrada").value = textFromFileLoaded;
         textFromJson = textFromFileLoaded;
@@ -35,47 +36,47 @@ function cargarEntrada() {
     var jsonString = textFromJson.toString();
     var jsonObjeto = JSON.parse(jsonString);
 
-    
+
     document.getElementById("carpetasdiv").appendChild(renderjson(jsonObjeto))
-  }
+}
 
 
-  /*button.addEventListener('click', () => {
-    var fileToLoad = document.getElementById("subirCarpetas").files[0];
-    var fileReader = new FileReader();
-    fileReader.onload = function(fileLoadedEvent){
-        textFromFileLoaded = fileLoadedEvent.target.result;
-        //document.getElementById("txtAreaEntrada").value = textFromFileLoaded;
-        textFromJson = textFromFileLoaded;
-    };
+/*button.addEventListener('click', () => {
+  var fileToLoad = document.getElementById("subirCarpetas").files[0];
+  var fileReader = new FileReader();
+  fileReader.onload = function(fileLoadedEvent){
+      textFromFileLoaded = fileLoadedEvent.target.result;
+      //document.getElementById("txtAreaEntrada").value = textFromFileLoaded;
+      textFromJson = textFromFileLoaded;
+  };
 
-    fileReader.readAsText(fileToLoad, "UTF-8");
-    var jsonString = textFromJson.toString();
-    var jsonObjeto = JSON.parse(jsonString);
+  fileReader.readAsText(fileToLoad, "UTF-8");
+  var jsonString = textFromJson.toString();
+  var jsonObjeto = JSON.parse(jsonString);
 
-    
-    document.getElementById("carpetasdiv").appendChild(renderjson(jsonObjeto))
+  
+  document.getElementById("carpetasdiv").appendChild(renderjson(jsonObjeto))
 
-  })*/
+})*/
 
 
-  /*function archivoE(){
-    alert("CONTENIDO:  "+textoArea);
+/*function archivoE(){
+  alert("CONTENIDO:  "+textoArea);
 
-  }*/
+}*/
 
-  function llenarErrores(){
+function llenarErrores() {
     alert("vamos a hacer la tabla")
     var x = document.getElementById("myTextarea").value;
     document.getElementById("divErrores").appendChild(x);
     //alert(x)
-  }
+}
 
-  function analizar(){
+function analizar() {
     //cargar cosas
-      alert("cargar datos a textareas");
-      
-      //alert(__dirname);
-        //parser.parse(textoArea);
+    alert("cargar datos a textareas");
 
-  }
+    //alert(__dirname);
+    //parser.parse(textoArea);
+
+}
